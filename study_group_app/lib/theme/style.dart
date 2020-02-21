@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 ThemeData appTheme() {
+  // These are all parameters of ThemeData. We can set them here and then use
+  // throughout the app.
   return ThemeData(
     // To use hex colors, use Color() and prefix hex with 0xff
     primaryColor: Colors.cyan[600],
