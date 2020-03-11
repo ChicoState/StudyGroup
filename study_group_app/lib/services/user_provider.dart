@@ -1,5 +1,4 @@
 import 'package:study_group_app/models/user.dart';
-import 'package:study_group_app/services/auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class UserProvider {
