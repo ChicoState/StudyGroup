@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:study_group_app/screens/auth/login.dart';
+import 'package:study_group_app/screens/auth/register.dart';
 
 class AuthView extends StatefulWidget {
   @override
@@ -17,8 +19,9 @@ class _AuthViewState extends State<AuthView> {
   @override
   Widget build(BuildContext context) {
     if (needsToRegister) {
-      return Register(toggleView: registerOrSignIn);
+      return Register(view: registerOrSignIn);
     } else {
-      return SignIn(toggleView: registerOrSignIn);
+      return LoginPage(view: registerOrSignIn);
     }
   }
+}

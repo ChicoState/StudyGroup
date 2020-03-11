@@ -4,8 +4,8 @@ import 'package:study_group_app/screens/home/home.dart';
 import 'package:study_group_app/models/user.dart';
 import 'package:study_group_app/screens/auth/auth_view.dart';
 
-class Listener extends StatelessWidget {
-  Listener({Key key, this.title}) : super(key: key);
+class Wrapper extends StatelessWidget {
+  Wrapper({Key key, this.title}) : super(key: key);
   final title;
 
   @override
