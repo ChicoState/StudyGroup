@@ -23,7 +23,7 @@ ThemeData appTheme() {
 }
 
 class Fonts {
-  static const baseTextStyle = const TextStyle(fontFamily: 'Poppins');
-  static const headerTextStyle = const TextStyle(
+  static const baseTextStyle = TextStyle(fontFamily: 'Poppins');
+  static const headerTextStyle = TextStyle(
       fontFamily: 'Poppins', fontSize: 18, fontWeight: FontWeight.w600);
 }
