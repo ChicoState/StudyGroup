@@ -14,6 +14,6 @@ class Wrapper extends StatelessWidget {
     final user = Provider.of<User>(context);
 
     // Depending on if a user is logged in or out, a different screen will be shown
-    return user == null ? AuthView() : HomePage();
+    return user == null ? AuthView() : HomePage(title: title);
   }
 }

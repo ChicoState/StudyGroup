@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
           theme: appTheme(),
           // Sets the home page by calling HomePage and passing in title set above
           //home: CourseSchedulePage(title: 'My Course Schedule'),
-          home: Wrapper(),
+          home: Wrapper(title: 'Study Buddy'),
           routes: <String, WidgetBuilder>{
             "/course-schedule": (BuildContext context) => CourseSchedulePage()
           }),

@@ -4,7 +4,8 @@ import 'package:study_group_app/services/auth.dart';
 
 // Stateful Login Page Class
 class LoginPage extends StatefulWidget {
-  // Determines what view the user will see. Called from listener
+  // Gives us a control on switching to login page. We can call this function locally
+  // which calls the registerOrSignIn function from auth_view.dart
   final Function view;
   LoginPage({this.view});
   // Creates the stateful widget LoginPage
@@ -22,7 +23,7 @@ class _LoginPageState extends State<LoginPage> {
   // Local variables to store email, password, and error
   String email;
   String password;
-  String error;
+  String error = '';
 
   // Holds the state of the forms
   bool _validateState = false;
@@ -33,9 +34,7 @@ class _LoginPageState extends State<LoginPage> {
       print('Error should print');
       setState(() => error = 'Wrong email or password');
     } else {
-      setState(() {
-        _validateState = true;
-      });
+      setState(() => _validateState = true);
     }
   }
 
@@ -95,6 +94,10 @@ class _LoginPageState extends State<LoginPage> {
                 child: Text('Login'),
               ),
               SizedBox(height: 12.0),
+              FlatButton(
+                onPressed: widget.view,
+                child: Text("Don't have an account? Sign up here!"),
+              ),
               Text(error,
                   style: TextStyle(
                       color: Colors.red,
