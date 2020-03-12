@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:study_group_app/services/auth.dart';
 import 'package:study_group_app/utilities/validations.dart';
@@ -45,6 +46,7 @@ class _RegisterState extends State<Register> {
     }
   }
 
+  // TODO Stylize input fields so they don't look terrible
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,6 +86,7 @@ class _RegisterState extends State<Register> {
                   _password = val;
                 },
               ),
+              // TODO Write function to validate passwords match
               TextFormField(
                 decoration: InputDecoration(
                     icon: Icon(Icons.lock), hintText: 'Confirm password'),
@@ -100,6 +103,21 @@ class _RegisterState extends State<Register> {
                 onPressed: formValidate,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15.0),
+                ),
+              ),
+              RichText(
+                text: TextSpan(
+                  text: "Already have an account? Sign in ",
+                  children: [
+                    TextSpan(
+                      text: 'here!',
+                      style: TextStyle(color: Colors.blue),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          widget.view();
+                        },
+                    ),
+                  ],
                 ),
               ),
             ],

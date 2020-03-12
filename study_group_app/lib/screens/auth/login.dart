@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:study_group_app/utilities/validations.dart';
 import 'package:study_group_app/services/auth.dart';
@@ -94,10 +95,23 @@ class _LoginPageState extends State<LoginPage> {
                 child: Text('Login'),
               ),
               SizedBox(height: 12.0),
-              FlatButton(
-                onPressed: widget.view,
-                child: Text("Don't have an account? Sign up here!"),
+              RichText(
+                text: TextSpan(
+                  text: "Don't have an account? Sign up ",
+                  children: [
+                    TextSpan(
+                      text: 'here!',
+                      style: TextStyle(color: Colors.blue),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          print('WTF');
+                          widget.view();
+                        },
+                    ),
+                  ],
+                ),
               ),
+
               Text(error,
                   style: TextStyle(
                       color: Colors.red,
@@ -120,31 +134,3 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 }
-
-/* The following code is for Google Authentication, currently in the works and
-    will be comment out for now.
-
-    Handles authentication of user sign-in
-    Taken from: https://pub.dev/packages/firebase_auth
-    Using for authentication testing for now.
-
-Future<FirebaseUser> _handleSignIn() async {
-  final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
-  final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
-
-  final AuthCredential credential = GoogleAuthProvider.getCredential(
-    accessToken: googleAuth.accessToken,
-    idToken: googleAuth.idToken,
-  );
-
-  final FirebaseUser user = (await _auth.signInWithCredential(credential)).user;
-  print("signed in " + user.displayName);
-  return user;
-}
- 
-    From sign-in button onPress call _handleSignIn() method 
-    using a future callback for both FirebaseUser and possible exception
-    _handleSignIn()
-        .then((FirebaseUser user) => print(user))
-        .catchError((e) => print(e));
-*/
