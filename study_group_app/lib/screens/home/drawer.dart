@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:study_group_app/services/auth.dart';
+
+final Auth _auth = Auth();
 
 // Separate the drawer into this class so it can be called from anywhere
 class MainDrawer extends StatelessWidget {
@@ -43,6 +46,11 @@ class MainDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.settings),
             title: Text('Settings'),
+          ),
+          ListTile(
+            leading: Icon(Icons.person),
+            title: Text('logout'),
+            onTap: _auth.logOut,
           ),
         ],
       ),
