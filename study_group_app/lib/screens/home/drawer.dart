@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:study_group_app/services/auth.dart';
+import 'package:study_group_app/screens/student/courses.dart';
 
 final Auth _auth = Auth();
 
@@ -33,6 +34,10 @@ class MainDrawer extends StatelessWidget {
             title: Text('Groups'),
           ),
           ListTile(
+            leading: Icon(Icons.book),
+            title: Text('My Courses'),
+          ),
+          ListTile(
             leading: Icon(Icons.account_circle),
             title: Text('Profile'),
           ),
@@ -42,7 +47,7 @@ class MainDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(Icons.person),
-            title: Text('logout'),
+            title: Text('Logout'),
             onTap: _auth.logOut,
           ),
         ],
