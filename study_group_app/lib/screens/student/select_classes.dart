@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+//import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:study_group_app/screens/student/course_schedule.dart';
 
 // Stateful course schedule page class.
@@ -77,7 +77,11 @@ class _MyCourseFormState extends State<CourseSchedulePage> {
                         width: 320,
                         child: FlatButton(
                           onPressed: (){
-                            //displaySchedule(context);
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MyCoursePageState())
+                            );
                           },
                           child: Text("Submit"),
                           color: Colors.blueAccent,

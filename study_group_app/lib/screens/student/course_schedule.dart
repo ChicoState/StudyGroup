@@ -8,101 +8,9 @@ import 'package:calendar_strip/calendar_strip.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:study_group_app/screens/student/select_classes.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
-
-/*
-// Stateful course schedule page class.
-class CourseSchedulePage extends StatefulWidget {
-  CourseSchedulePage({Key key, this.title}) : super(key: key);
-  final String title; // final keyword b/c title is in sub widget
-
-  @override
-  // Creates the stateful widget HomePage
-  _MyCourseFormState createState() => _MyCourseFormState();
-}
-
-
-// Inherits from CourseSchedulePage above
-class _MyCourseFormState extends State<CourseSchedulePage> {
-  //DateTime _dateTime;
-
-  // Form controllers
-  TextEditingController courseNameController = TextEditingController();
-  TextEditingController courseDayController = TextEditingController();
-  TextEditingController courseTimeController = TextEditingController();
-
-  // Form data
-  DateTime _dateTime;
-
-  void dispose() {
-  courseNameController.dispose();
-  courseDayController.dispose();
-  courseTimeController.dispose();
-  super.dispose();
-  }
-  
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Add your Class Schedule'),
-        ),
-        body: Stack(
-          children: <Widget>[
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 100.0),
-              child: Center(
-                child: Column(
-                  children: <Widget>[
-                      TextFormField (
-                          //controller: courseNameController,
-                          cursorColor: Colors.black,
-                          decoration:InputDecoration(
-                            hintText: "Enter your class name",
-                            hintStyle:TextStyle(color: Colors.black),
-                            border: OutlineInputBorder(),
-                          )
-                      ),
-                      TextFormField (
-                        //controller: courseDayController,
-                        cursorColor: Colors.black,
-                        decoration: InputDecoration(
-                          hintText: "Enter the Day",
-                          hintStyle:TextStyle(color: Colors.black),
-                          border: OutlineInputBorder(),
-                        )
-                      ),
-                      TextFormField (
-                        //controller: courseTimeController,
-                        cursorColor: Colors.black,
-                        decoration: InputDecoration(
-                          hintText: "Enter the Time",
-                          hintStyle:TextStyle(color: Colors.black),
-                          border: OutlineInputBorder(),
-                        )
-                      ),
-                      SizedBox (
-                        width: 320,
-                        child: FlatButton(
-                          onPressed: (){
-                            //displaySchedule(context);
-                          },
-                          child: Text("Submit"),
-                          color: Colors.blueAccent,
-                        ),
-                      )
-                    ]
-                  ,)
-                ,)
-              ,)
-          ],
-        ),
-    );
-  }
-}
-*/
+import 'package:flutter/src/widgets/container.dart';
 
  // Displays the given information
 class MyCoursePageState extends StatefulWidget {
@@ -123,20 +31,51 @@ class _MyCoursePageState extends State<MyCoursePageState> {
         title: Text("My Course Schedule"),
       ),
       body: Container(
-        child: CalendarStrip(
-          startDate: now,
-          endDate: now.add(new Duration(days:60)),
-          onDateSelected: onSelect,
-          )
-      ),
+          child: CalendarStrip(
+              startDate: now,
+              endDate: now.add(new Duration(days:60)),
+              onDateSelected: onSelect,
+            ),
+          ),
     );
   }
 
+  /*
+  void CalendarStripView()
+  {
+    var now = new DateTime.now();
+    return Container(
+          child: Center(
+            child: CalendarStrip(
+              startDate: now,
+              endDate: now.add(new Duration(days:60)),
+              onDateSelected: onSelect,
+            ),
+          )
+    );
+  }
+  */
+
+  
+
+  // List of data to display
+  List<course> _getDataSource() {
+    var courses = <course>[];
+    final DateTime today = DateTime.now();
+    final DateTime startTime =
+        DateTime(today.year, today.month, today.day, 22, 0, 0);
+    final DateTime endTime = startTime.add(const Duration(hours: 2));
+    courses.add(
+        course('Software Engineering','CSCI430',startTime, endTime));
+    return courses;
+  }
+
+  // Invokes the day-view when a day is selected on the strip
   onSelect(data) {
       return Container(
         child: SfCalendar(
           view: CalendarView.day,
-          //dataSource: MeetingDataSource(_getDataSource()),
+          dataSource: CourseDataSource(_getDataSource()),
           timeSlotViewSettings: TimeSlotViewSettings(
             timeTextStyle: TextStyle(color: Colors.black),
             timeRulerSize: 100,
@@ -145,4 +84,36 @@ class _MyCoursePageState extends State<MyCoursePageState> {
         ),
       );
   }
+}
+
+class CourseDataSource extends CalendarDataSource {
+  CourseDataSource(List<course> source){
+    appointments = source;
+  }
+
+  @override
+  DateTime getStartTime(int index) {
+    return appointments[index].start;
+  }
+
+  @override
+  DateTime getEndTime(int index) {
+    return appointments[index].finish;
+  }
+
+  @override
+  String getName(int index) {
+    return appointments[index].courseName;
+  }
+}
+
+// Temporary data for testing
+class course {
+  course(this.courseName, this.courseID, this.start, this.finish);
+
+  String courseName;
+  String courseID;
+  DateTime start;
+  DateTime finish;
+  
 }

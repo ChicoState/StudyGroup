@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
         persistentFooterButtons: <Widget>[
           RaisedButton(
             onPressed: () {
-              Navigator.of(context).pushNamed("/course-schedule");
+              Navigator.of(context).pushNamed("/select-classes");
             },
             color: Colors.blueAccent,
             child: Text('Add Classes'),

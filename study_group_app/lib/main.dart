@@ -22,8 +22,8 @@ class MyApp extends StatelessWidget {
       // Importing from theme/style.dart
       theme: appTheme(),
       // Sets the home page by calling HomePage and passing in title set above
-      //home: HomePage(title: 'Study Buddy App'), // Placeholder title for now
-      home: CourseSchedulePage(title: 'My Course Schedule'),
+      home: HomePage(title: 'Study Buddy App'), // Placeholder title for now
+      //home: CourseSchedulePage(title: 'My Course Schedule'),
       routes: <String, WidgetBuilder> {
         "/select-classes": (BuildContext context) => new CourseSchedulePage()}
     );
