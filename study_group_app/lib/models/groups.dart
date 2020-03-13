@@ -25,7 +25,7 @@ class UserStudyGroup {
 }
 
 class GroupProvider {
-  List<Group> _groups = new List<Group>();
+  List<Group> _groups = List<Group>();
   List<UserStudyGroup> _userGroups = List<UserStudyGroup>();
 
   GroupProvider._() {
@@ -37,49 +37,49 @@ class GroupProvider {
           meetDay: 'Monday',
           timeBlock: '3-5pm',
           maxMembers: 4));
-      _groups.add(new Group(
+      _groups.add(Group(
           id: 1,
           name: 'Best Group',
           members: 3,
           meetDay: 'Wednesday',
           timeBlock: '2-3pm',
           maxMembers: 4));
-      _groups.add(new Group(
+      _groups.add(Group(
           id: 2,
           name: 'Annoying People',
           members: 2,
           meetDay: 'Tuesday',
           timeBlock: '4-5pm',
           maxMembers: 4));
-      _groups.add(new Group(
+      _groups.add(Group(
           id: 3,
           name: 'Plant club',
           members: 4,
           meetDay: 'Tuesday',
           timeBlock: '5-8pm',
           maxMembers: 8));
-      _groups.add(new Group(
+      _groups.add(Group(
           id: 4,
           name: '...some other name',
           members: 3,
           meetDay: 'Sat',
           timeBlock: '5-8pm',
           maxMembers: 4));
-      _groups.add(new Group(
+      _groups.add(Group(
           id: 5,
           name: 'too many groups',
           members: 2,
           meetDay: 'Friday',
           timeBlock: '5-8pm',
           maxMembers: 2));
-      _groups.add(new Group(
+      _groups.add(Group(
           id: 6,
           name: 'Assholes Anonymous',
           members: 2,
           meetDay: 'Friday',
           timeBlock: '5-8pm',
           maxMembers: 2));
-      _groups.add(new Group(
+      _groups.add(Group(
           id: 7,
           name: 'Bottom Bitch',
           members: 2,
@@ -90,31 +90,31 @@ class GroupProvider {
     // UserStudyGroup(studyGrpId, userId)
     if (_userGroups.isEmpty) {
       // Group 0
-      _userGroups.add(new UserStudyGroup(0, 0));
-      _userGroups.add(new UserStudyGroup(0, 1));
-      _userGroups.add(new UserStudyGroup(0, 2));
-      _userGroups.add(new UserStudyGroup(0, 3));
+      _userGroups.add(UserStudyGroup(0, 0));
+      _userGroups.add(UserStudyGroup(0, 1));
+      _userGroups.add(UserStudyGroup(0, 2));
+      _userGroups.add(UserStudyGroup(0, 3));
 
       // Group 1
-      _userGroups.add(new UserStudyGroup(1, 1));
-      _userGroups.add(new UserStudyGroup(1, 2));
-      _userGroups.add(new UserStudyGroup(1, 4));
+      _userGroups.add(UserStudyGroup(1, 1));
+      _userGroups.add(UserStudyGroup(1, 2));
+      _userGroups.add(UserStudyGroup(1, 4));
 
       // Group 2
-      _userGroups.add(new UserStudyGroup(2, 0));
-      _userGroups.add(new UserStudyGroup(2, 2));
+      _userGroups.add(UserStudyGroup(2, 0));
+      _userGroups.add(UserStudyGroup(2, 2));
 
-      _userGroups.add(new UserStudyGroup(3, 0));
-      _userGroups.add(new UserStudyGroup(3, 2));
+      _userGroups.add(UserStudyGroup(3, 0));
+      _userGroups.add(UserStudyGroup(3, 2));
 
-      _userGroups.add(new UserStudyGroup(4, 0));
-      _userGroups.add(new UserStudyGroup(4, 2));
+      _userGroups.add(UserStudyGroup(4, 0));
+      _userGroups.add(UserStudyGroup(4, 2));
 
-      _userGroups.add(new UserStudyGroup(5, 2));
+      _userGroups.add(UserStudyGroup(5, 2));
 
-      _userGroups.add(new UserStudyGroup(6, 2));
+      _userGroups.add(UserStudyGroup(6, 2));
 
-      _userGroups.add(new UserStudyGroup(7, 2));
+      _userGroups.add(UserStudyGroup(7, 2));
     }
   }
 
@@ -122,7 +122,7 @@ class GroupProvider {
   static final GroupProvider instance = GroupProvider._();
 
   List<Group> getGroupsById(int userId) {
-    List<Group> grpList = new List<Group>();
+    List<Group> grpList = List<Group>();
     List<UserStudyGroup> userGroups = getUserGroups(userId);
     for (var userGrp in userGroups) {
       for (var grp in _groups) {
@@ -135,7 +135,7 @@ class GroupProvider {
   }
 
   List<UserStudyGroup> getUserGroups(int usrId) {
-    List<UserStudyGroup> userGroups = new List<UserStudyGroup>();
+    List<UserStudyGroup> userGroups = List<UserStudyGroup>();
     for (var userGrp in _userGroups) {
       if (userGrp.userId == usrId) {
         userGroups.add(userGrp);
