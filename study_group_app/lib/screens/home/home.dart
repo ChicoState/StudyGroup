@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
         persistentFooterButtons: <Widget>[
           RaisedButton(
             onPressed: () {
-              Navigator.of(context).pushNamed("/course-schedule");
+              Navigator.of(context).pushNamed("/select-classes");
             },
             color: Colors.blueAccent,
             child: Text('Add Classes'),
@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   // Testing for Firebase iOS Configuration
-  int testNum = 0;
+  /*int testNum = 0;
   void getUpdate() {
     Firestore.instance
         .collection('test')
@@ -60,5 +60,5 @@ class _HomePageState extends State<HomePage> {
       print(testNum);
       setState(() {});
     });
-  }
+  }*/
 }

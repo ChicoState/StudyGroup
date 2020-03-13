@@ -32,6 +32,12 @@ dependencies:
   firebase_auth: 0.15.3
   provider: ^4.0.4
 
+  # Calendar strip for course_schedule
+  calendar_strip: ^1.0.4
+  # Calenday day view for course_schedule
+  syncfusion_flutter_calendar: ^17.4.51-beta
+
+
 dependency_overrides:
   firebase_core: 0.4.4
 

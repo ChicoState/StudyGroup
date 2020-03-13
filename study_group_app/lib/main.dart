@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:study_group_app/services/auth.dart';
 import 'package:study_group_app/theme/style.dart';
-import 'package:study_group_app/screens/student/course_schedule.dart';
+import 'package:study_group_app/screens/student/select_classes.dart';
 import 'package:study_group_app/screens/wrapper.dart';
 import 'package:provider/provider.dart';
 import 'package:study_group_app/models/user.dart';
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
           //home: CourseSchedulePage(title: 'My Course Schedule'),
           home: Wrapper(title: 'Study Buddy'),
           routes: <String, WidgetBuilder>{
-            "/course-schedule": (BuildContext context) => CourseSchedulePage()
+            "/select-classes": (BuildContext context) => new CourseSchedulePage(),
           }),
     );
   }
