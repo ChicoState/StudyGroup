@@ -56,14 +56,11 @@ class _MyCoursePageState extends State<MyCoursePageState> {
   }
   */
 
-  
-
   // List of data to display
   List<course> _getDataSource() {
     var courses = <course>[];
     final DateTime today = DateTime.now();
-    final DateTime startTime =
-        DateTime(today.year, today.month, today.day, 22, 0, 0);
+    final DateTime startTime = DateTime(today.year, today.month, today.day, 22, 0, 0);
     final DateTime endTime = startTime.add(const Duration(hours: 2));
     courses.add(
         course('Software Engineering','CSCI430',startTime, endTime));
