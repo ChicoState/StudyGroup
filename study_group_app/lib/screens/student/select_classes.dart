@@ -27,73 +27,68 @@ class _MyCourseFormState extends State<CourseSchedulePage> {
   DateTime _dateTime;
 
   void dispose() {
-  courseNameController.dispose();
-  courseDayController.dispose();
-  courseTimeController.dispose();
-  super.dispose();
+    courseNameController.dispose();
+    courseDayController.dispose();
+    courseTimeController.dispose();
+    super.dispose();
   }
-  
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Add your Class Schedule'),
-        ),
-        body: Stack(
+      ),
+      body: SingleChildScrollView(
+        child: Stack(
           children: <Widget>[
             Container(
               padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 100.0),
               child: Center(
                 child: Column(
                   children: <Widget>[
-                      TextFormField (
-                          //controller: courseNameController,
-                          cursorColor: Colors.black,
-                          decoration:InputDecoration(
-                            hintText: "Enter your class name",
-                            hintStyle:TextStyle(color: Colors.black),
-                            border: OutlineInputBorder(),
-                          )
-                      ),
-                      TextFormField (
+                    TextFormField(
+                        //controller: courseNameController,
+                        cursorColor: Colors.black,
+                        decoration: InputDecoration(
+                          hintText: "Enter your class name",
+                          hintStyle: TextStyle(color: Colors.black),
+                          border: OutlineInputBorder(),
+                        )),
+                    TextFormField(
                         //controller: courseDayController,
                         cursorColor: Colors.black,
                         decoration: InputDecoration(
                           hintText: "Enter the Day",
-                          hintStyle:TextStyle(color: Colors.black),
+                          hintStyle: TextStyle(color: Colors.black),
                           border: OutlineInputBorder(),
-                        )
-                      ),
-                      TextFormField (
+                        )),
+                    TextFormField(
                         //controller: courseTimeController,
                         cursorColor: Colors.black,
                         decoration: InputDecoration(
                           hintText: "Enter the Time",
-                          hintStyle:TextStyle(color: Colors.black),
+                          hintStyle: TextStyle(color: Colors.black),
                           border: OutlineInputBorder(),
-                        )
+                        )),
+                    SizedBox(
+                      width: 320,
+                      child: FlatButton(
+                        onPressed: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => CourseViewerState()));
+                        },
+                        child: Text("Submit"),
+                        color: Colors.blueAccent,
                       ),
-                      SizedBox (
-                        width: 320,
-                        child: FlatButton(
-                          onPressed: (){
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => CourseViewerState())
-                            );
-                          },
-                          child: Text("Submit"),
-                          color: Colors.blueAccent,
-                        ),
-                      )
-                    ]
-                  ,)
-                ,)
-              ,)
+                    )
+                  ],
+                ),
+              ),
+            )
           ],
         ),
+      ),
     );
   }
 }
