@@ -19,7 +19,8 @@ class CourseSchedulePage extends StatefulWidget {
 
   @override
   // Creates the stateful widget HomePage
-  _MyCourseFormState createState() => _MyCourseFormState();
+  @override
+  _MyCoursePageState createState() => _MyCoursePageState();
 }
 
 
@@ -27,10 +28,21 @@ class CourseSchedulePage extends StatefulWidget {
 class _MyCourseFormState extends State<CourseSchedulePage> {
   //DateTime _dateTime;
 
-  // Form controllers
-  TextEditingController courseNameController = TextEditingController();
-  TextEditingController courseDayController = TextEditingController();
-  TextEditingController courseTimeController = TextEditingController();
+  // Invokes the day-view when a day is selected on the strip
+  onSelect(data) {
+      return Container(
+        child: SfCalendar(
+          view: CalendarView.day,
+          dataSource: CourseDataSource(_getDataSource()),
+          timeSlotViewSettings: TimeSlotViewSettings(
+            timeTextStyle: TextStyle(color: Colors.black),
+            timeRulerSize: 100,
+            timeInterval: Duration(hours: 1),
+          ),
+        ),
+      );
+  }
+}
 
   // Form data
   DateTime _dateTime;

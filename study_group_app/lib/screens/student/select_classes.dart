@@ -117,7 +117,6 @@ class _MyCourseFormState extends State<CourseSchedulePage> {
   }
 
 
-
   // Displays the schedule
   void displaySchedule(BuildContext context){
     Navigator.push(
