@@ -49,7 +49,7 @@ class MainDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(Icons.person),
-            title: Text('logout'),
+            title: Text('Logout'),
             onTap: _auth.logOut,
           ),
         ],

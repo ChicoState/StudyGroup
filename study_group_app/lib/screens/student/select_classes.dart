@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/services.dart';
+import 'package:study_group_app/models/class.dart';
 import 'package:study_group_app/screens/student/course_schedule.dart';
 
 // Stateful course schedule page class.
@@ -15,7 +17,8 @@ class CourseSchedulePage extends StatefulWidget {
 
 // Inherits from CourseSchedulePage above
 class _MyCourseFormState extends State<CourseSchedulePage> {
-  //DateTime _dateTime;
+  final db = Firestore.instance;
+  
 
   // Form controllers
   TextEditingController courseNameController = TextEditingController();
@@ -32,6 +35,7 @@ class _MyCourseFormState extends State<CourseSchedulePage> {
   super.dispose();
   }
   
+
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +57,7 @@ class _MyCourseFormState extends State<CourseSchedulePage> {
                             hintText: "Enter your class name",
                             hintStyle:TextStyle(color: Colors.black),
                             border: OutlineInputBorder(),
-                          )
+                          ),
                       ),
                       TextFormField (
                         controller: courseDayController,
@@ -67,6 +71,7 @@ class _MyCourseFormState extends State<CourseSchedulePage> {
                       TextFormField (
                         controller: courseTimeController,
                         cursorColor: Colors.black,
+                        keyboardType: TextInputType.datetime,
                         decoration: InputDecoration(
                           hintText: "Enter the Time",
                           hintStyle:TextStyle(color: Colors.black),
