@@ -6,7 +6,6 @@ import 'package:study_group_app/screens/wrapper.dart';
 import 'package:provider/provider.dart';
 import 'package:study_group_app/models/user.dart';
 
-
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {

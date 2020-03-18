@@ -34,8 +34,14 @@ dependencies:
 
   # Calendar strip for course_schedule
   calendar_strip: ^1.0.4
+<<<<<<< HEAD
   # Calenday day view for course_schedule
   syncfusion_flutter_calendar: ^17.4.51-beta
+=======
+  # Calendar view for course_schedule
+  table_calendar: ^2.2.2
+  #syncfusion_flutter_calendar: ^17.4.51-beta
+>>>>>>> 2799d45f66a93acd201db6ca8e9ac985420f32ef
 
 
 dependency_overrides:

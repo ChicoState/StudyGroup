@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
-import 'package:study_group_app/models/class.dart';
 import 'package:study_group_app/screens/student/course_schedule.dart';
 
 // Stateful course schedule page class.
@@ -29,12 +28,11 @@ class _MyCourseFormState extends State<CourseSchedulePage> {
   DateTime _dateTime;
 
   void dispose() {
-  courseNameController.dispose();
-  courseDayController.dispose();
-  courseTimeController.dispose();
-  super.dispose();
+    courseNameController.dispose();
+    courseDayController.dispose();
+    courseTimeController.dispose();
+    super.dispose();
   }
-  
 
 
   @override
@@ -42,8 +40,9 @@ class _MyCourseFormState extends State<CourseSchedulePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Add your Class Schedule'),
-        ),
-        body: Stack(
+      ),
+      body: SingleChildScrollView(
+        child: Stack(
           children: <Widget>[
             Container(
               padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 100.0),
@@ -64,7 +63,7 @@ class _MyCourseFormState extends State<CourseSchedulePage> {
                         cursorColor: Colors.black,
                         decoration: InputDecoration(
                           hintText: "Enter the Day",
-                          hintStyle:TextStyle(color: Colors.black),
+                          hintStyle: TextStyle(color: Colors.black),
                           border: OutlineInputBorder(),
                         )
                       ),
@@ -74,10 +73,19 @@ class _MyCourseFormState extends State<CourseSchedulePage> {
                         keyboardType: TextInputType.datetime,
                         decoration: InputDecoration(
                           hintText: "Enter the Time",
-                          hintStyle:TextStyle(color: Colors.black),
+                          hintStyle: TextStyle(color: Colors.black),
                           border: OutlineInputBorder(),
-                        )
-                      ),
+                        )),
+                    // SizedBox(
+                    //   width: 320,
+                    //   child: FlatButton(
+                    //     onPressed: () {
+                    //       Navigator.push(context,
+                    //           MaterialPageRoute(builder: (context) => CourseViewerState()));
+                    //     },
+                    //     child: Text("Submit"),
+                    //     color: Colors.blueAccent,
+                    //   ),
                       SizedBox (
                         width: 320,
                         child: FlatButton(
@@ -98,6 +106,7 @@ class _MyCourseFormState extends State<CourseSchedulePage> {
               ,)
           ],
         ),
+      ),
     );
   }
 }
