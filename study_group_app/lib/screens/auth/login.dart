@@ -53,74 +53,154 @@ class _LoginPageState extends State<LoginPage> {
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
         // backgroundColor: Theme.of(context).backgroundColor,
-        backgroundColor: Colors.grey,
-        title: Text('Log in'),
+        backgroundColor: Colors.black,
+        title: Text('Log In'),
+        
       ),
-      // Container: UI for Login Form
-      body: Center(
-        child: Form(
-          key: _formKey,
-          autovalidate: _validateState,
-          child: Column(
-            children: <Widget>[
-              Text(
-                'Login Information',
-                style: TextStyle(fontSize: 20),
-              ),
-              // Email field
-              TextFormField(
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
-                    icon: Icon(Icons.person),
-                    labelText: "Email Address",
-                  ),
-                  validator: Validations.instance.emailValidation,
-                  onSaved: (String val) {
-                    email = val;
-                  }),
-              // Password field - actual typed letters are hidden
-              TextFormField(
-                decoration: InputDecoration(
-                    labelText: "Password", icon: Icon(Icons.lock)),
-                obscureText: true,
-                onSaved: (String val) {
-                  password = val;
-                },
-              ),
-              // Login button
-              RaisedButton(
-                textColor: Colors.white,
-                color: Colors.grey,
-                onPressed: formValidate,
-                child: Text('Login'),
-              ),
-              SizedBox(height: 12.0),
-              RichText(
-                text: TextSpan(
-                  text: "Don't have an account? Sign up ",
-                  children: [
-                    TextSpan(
-                      text: 'here!',
-                      style: TextStyle(color: Colors.blue),
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () {
-                          print('WTF');
-                          widget.view();
+      body: Stack (
+        children: <Widget>[
+          Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Color(0xFF9FA8DA),
+                  Color(0xFF7986CB),
+                  Color(0xFF5C6BC0),
+                  Color(0xFF5C6BC0),
+                ],
+              )
+            )
+          ),
+          // Container: UI for Login Form
+          Container(
+            height: double.infinity,
+            child: SingleChildScrollView(
+              physics: AlwaysScrollableScrollPhysics(),
+              padding: EdgeInsets.symmetric(horizontal:40, vertical:60),
+              child: Form(
+                key: _formKey,
+                autovalidate: _validateState,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      'Login Information',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                      )
+                    ),
+                    SizedBox(height:30),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        SizedBox(height:10),
+                        TextFormField(
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: InputDecoration(
+                            icon: Icon(Icons.email, color:Colors.white,),
+                            labelText: "Email Address",
+                          ),
+                          validator: Validations.instance.emailValidation,
+                          onSaved: (String val) {
+                            email = val;
+                          }
+                        )
+                      ],
+                    ),
+                    SizedBox(height:30),
+                    // Password field - actual typed letters are hidden
+                    TextFormField(
+                      decoration: InputDecoration(
+                        labelText: "Password", icon: Icon(Icons.lock, color:Colors.white,)),
+                        obscureText: true,
+                        onSaved: (String val) {
+                          password = val;
                         },
                     ),
+                    Container(
+                      alignment: Alignment.centerRight,
+                      child: FlatButton (
+                        onPressed: () {},
+                        child: Text(
+                          'Forgot Password?',
+                          style: TextStyle(
+                            color: Colors.white,
+                          )
+                          ),
+                      )
+                    ),
+                    Container(
+                      padding: EdgeInsets.symmetric(vertical:17),
+                      width:double.infinity,
+                      // Login button
+                      child:RaisedButton(
+                        onPressed: formValidate,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                      child: Text(
+                        'LOGIN',
+                        style: TextStyle(
+                          color: Color(0xFF7986CB),
+                          letterSpacing: 1.5,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        )
+                      ),
+                      )
+                    ),
+                    Column(
+                      children: <Widget>[
+                        Text(
+                          ' - OR - ',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w500,
+                          )
+                        ),
+                        SizedBox(height: 30),
+                        RichText(
+                          text: TextSpan(
+                            text: "Don't have an account? ",
+                            style: TextStyle(fontSize: 16),
+                            children: [
+                              TextSpan(
+                                text: 'Sign Up!',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                   print('WTF');
+                                   widget.view();
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
+                        Text(
+                          error,
+                          style: TextStyle(
+                            color: Colors.red,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          )
+                        )
+                      ],
+                    )
                   ],
                 ),
-              ),
-
-              Text(error,
-                  style: TextStyle(
-                      color: Colors.red,
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold)),
-            ],
-          ),
-        ),
-      ),
+              )
+            )
+          )
+        ]
+      )
     );
   }
 
