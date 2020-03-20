@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/services.dart';
-import 'package:study_group_app/screens/student/course_schedule.dart';
+//import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:study_group_app/screens/student/calendar.dart';
+import 'package:study_group_app/screens/student/courses.dart';
 
 // Stateful course schedule page class.
 class CourseSchedulePage extends StatefulWidget {
@@ -16,9 +16,6 @@ class CourseSchedulePage extends StatefulWidget {
 
 // Inherits from CourseSchedulePage above
 class _MyCourseFormState extends State<CourseSchedulePage> {
-  final db = Firestore.instance;
-  
-
   // Form controllers
   TextEditingController courseNameController = TextEditingController();
   TextEditingController courseDayController = TextEditingController();
@@ -50,16 +47,16 @@ class _MyCourseFormState extends State<CourseSchedulePage> {
                 child: Column(
                   children: <Widget>[
                       TextFormField (
-                          controller: courseNameController,
+                          //controller: courseNameController,
                           cursorColor: Colors.black,
-                          decoration:InputDecoration(
+                          decoration: InputDecoration(
                             hintText: "Enter your class name",
                             hintStyle:TextStyle(color: Colors.black),
                             border: OutlineInputBorder(),
                           ),
                       ),
                       TextFormField (
-                        controller: courseDayController,
+                        //controller: courseDayController,
                         cursorColor: Colors.black,
                         decoration: InputDecoration(
                           hintText: "Enter the Day",
@@ -68,7 +65,7 @@ class _MyCourseFormState extends State<CourseSchedulePage> {
                         )
                       ),
                       TextFormField (
-                        controller: courseTimeController,
+                        //controller: courseTimeController,
                         cursorColor: Colors.black,
                         keyboardType: TextInputType.datetime,
                         decoration: InputDecoration(
@@ -76,30 +73,17 @@ class _MyCourseFormState extends State<CourseSchedulePage> {
                           hintStyle: TextStyle(color: Colors.black),
                           border: OutlineInputBorder(),
                         )),
-                    // SizedBox(
-                    //   width: 320,
-                    //   child: FlatButton(
-                    //     onPressed: () {
-                    //       Navigator.push(context,
-                    //           MaterialPageRoute(builder: (context) => CourseViewerState()));
-                    //     },
-                    //     child: Text("Submit"),
-                    //     color: Colors.blueAccent,
-                    //   ),
-                      SizedBox (
-                        width: 320,
-                        child: FlatButton(
-                          onPressed: (){
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => MyCoursePageState())
-                              );
-                          },
-                          child: Text("Submit"),
-                          color: Colors.blueAccent,
+                        SizedBox(
+                          width: 320,
+                          child: FlatButton(
+                            onPressed: () {
+                              Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => CourseViewerState()));
+                        },
+                        child: Text("Submit"),
+                        color: Colors.blueAccent,
                         ),
-                      )
+                        )
                     ]
                   ,)
                 ,)

@@ -31,7 +31,7 @@ class MainDrawer extends StatelessWidget {
           // ListTiles are fixed height rows that contain text and an icon
           ListTile(
             leading: Icon(Icons.class_),
-            title: Text('Classes'),
+            title: Text('My Courses'),
             onTap: (){
               Navigator.of(context).pushNamed("/select-classes");
             },
@@ -40,10 +40,10 @@ class MainDrawer extends StatelessWidget {
             leading: Icon(Icons.group),
             title: Text('Groups'),
           ),
-          ListTile(
-            leading: Icon(Icons.book),
-            title: Text('My Courses'),
-          ),
+          // ListTile(
+          //   leading: Icon(Icons.book),
+          //   title: Text('My Courses'),
+          // ),
           ListTile(
             leading: Icon(Icons.account_circle),
             title: Text('Profile'),
