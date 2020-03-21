@@ -8,18 +8,20 @@ ThemeData appTheme() {
       primaryColor: Colors.grey[900],
       brightness: Brightness.light,
       accentColor: Color(0xFF212121),
+      //cursorColor: Colors.black,
       // secondaryHeaderColor: Color(0xff007c91),
       secondaryHeaderColor: Colors.grey[600],
-      hintColor: Color(0xff5ddef4),
+      hintColor: Color(0xffffffff),
       textTheme: TextTheme(
           body1: TextStyle(color: Colors.white),
           headline: TextStyle(color: Colors.black),
           caption: TextStyle(color: Colors.white)),
       dividerColor: Colors.grey[700],
-      buttonColor: Colors.black,
+      //buttonColor: Colors.black,
       scaffoldBackgroundColor: Colors.white,
       canvasColor: Colors.grey[300],
-      backgroundColor: Colors.grey[700]);
+      backgroundColor: Colors.grey[700]
+      );
 }
 
 class Fonts {

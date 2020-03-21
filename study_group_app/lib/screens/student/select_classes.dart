@@ -16,8 +16,6 @@ class CourseSchedulePage extends StatefulWidget {
 
 // Inherits from CourseSchedulePage above
 class _MyCourseFormState extends State<CourseSchedulePage> {
-  //DateTime _dateTime;
-
   // Form controllers
   TextEditingController courseNameController = TextEditingController();
   TextEditingController courseDayController = TextEditingController();
@@ -33,6 +31,7 @@ class _MyCourseFormState extends State<CourseSchedulePage> {
     super.dispose();
   }
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,45 +46,48 @@ class _MyCourseFormState extends State<CourseSchedulePage> {
               child: Center(
                 child: Column(
                   children: <Widget>[
-                    TextFormField(
-                        //controller: courseNameController,
-                        cursorColor: Colors.black,
-                        decoration: InputDecoration(
-                          hintText: "Enter your class name",
-                          hintStyle: TextStyle(color: Colors.black),
-                          border: OutlineInputBorder(),
-                        )),
-                    TextFormField(
+                      TextFormField (
+                          //controller: courseNameController,
+                          cursorColor: Colors.black,
+                          decoration: InputDecoration(
+                            hintText: "Enter your class name",
+                            hintStyle:TextStyle(color: Colors.black),
+                            border: OutlineInputBorder(),
+                          ),
+                      ),
+                      TextFormField (
                         //controller: courseDayController,
                         cursorColor: Colors.black,
                         decoration: InputDecoration(
                           hintText: "Enter the Day",
                           hintStyle: TextStyle(color: Colors.black),
                           border: OutlineInputBorder(),
-                        )),
-                    TextFormField(
+                        )
+                      ),
+                      TextFormField (
                         //controller: courseTimeController,
                         cursorColor: Colors.black,
+                        keyboardType: TextInputType.datetime,
                         decoration: InputDecoration(
                           hintText: "Enter the Time",
                           hintStyle: TextStyle(color: Colors.black),
                           border: OutlineInputBorder(),
                         )),
-                    SizedBox(
-                      width: 320,
-                      child: FlatButton(
-                        onPressed: () {
-                          Navigator.push(context,
+                        SizedBox(
+                          width: 320,
+                          child: FlatButton(
+                            onPressed: () {
+                              Navigator.push(context,
                               MaterialPageRoute(builder: (context) => CourseViewerState()));
                         },
                         child: Text("Submit"),
                         color: Colors.blueAccent,
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            )
+                        ),
+                        )
+                    ]
+                  ,)
+                ,)
+              ,)
           ],
         ),
       ),
@@ -112,74 +114,6 @@ class _MyCourseFormState extends State<CourseSchedulePage> {
   super.dispose();
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp (
-      
-        home: Material (
-            child: Stack(
-              children: <Widget>[
-                Container(
-                    padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 100.0),
-                    child: Center (
-                        child: Column (
-                          children: <Widget>[
-                            Text ("Enter your Class Schedule",
-                              style: TextStyle (
-                                fontWeight: FontWeight.bold,
-                                fontSize:20,
-                              )
-                            ),
-                            TextFormField (
-                                controller: courseNameController,
-                                cursorColor: Colors.black,
-                                decoration:InputDecoration(
-                                  hintText: "Enter your class name",
-                                  border: OutlineInputBorder(),
-                                )
-                            ),
-                            TextFormField (
-                              controller: courseDayController,
-                                cursorColor: Colors.black,
-                                decoration:InputDecoration(
-                                  hintText: "Enter the Day",
-                                  border: OutlineInputBorder(),
-                                )
-                            ),
-                            TextFormField (
-                                controller: courseTimeController,
-                                cursorColor: Colors.black,
-                                decoration: InputDecoration(
-                                  hintText: "Enter the Time",
-                                  border: OutlineInputBorder(),
-                                )
-                            ),
-                            SizedBox (
-                                width: 320,
-                                child: FlatButton (
-                                  onPressed: (){
-                                    saveSchedule();
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => MyCoursePageState()
-                                      )
-                                    );
-                                  },
-                                  child: Text("Submit",
-                                  ),
-                                  color: Colors.blueAccent,
-                                )
-                            )
-                          ],
-                        )
-                    )
-                )
-              ],
-            )
-        )
-    );
-  }
 
   // Displays the schedule
   void displaySchedule(BuildContext context){

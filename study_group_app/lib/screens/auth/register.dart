@@ -52,77 +52,142 @@ class _RegisterState extends State<Register> {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
-        backgroundColor: Theme.of(context).backgroundColor,
         title: Text('Register'),
       ),
-      body: Center(
-        child: Form(
-          key: _formKey,
-          autovalidate: _validateState,
-          child: Column(
-            children: <Widget>[
-              TextFormField(
-                decoration: InputDecoration(
-                  icon: Icon(Icons.email),
-                  hintText: 'Enter an email for registration',
-                  labelText: 'Email',
-                ),
-                keyboardType: TextInputType.emailAddress,
-                validator: Validations.instance.emailValidation,
-                onSaved: (String val) {
-                  _email = val;
-                },
-              ),
-              SizedBox(height: 12),
-              TextFormField(
-                decoration: InputDecoration(
-                  icon: Icon(Icons.lock),
-                  hintText: 'Enter a password between 6-20 characters',
-                  labelText: 'Password',
-                ),
-                obscureText: true,
-                validator: Validations.instance.password,
-                onSaved: (String val) {
-                  _password = val;
-                },
-              ),
-              // TODO Write function to validate passwords match
-              TextFormField(
-                decoration: InputDecoration(
-                    icon: Icon(Icons.lock), hintText: 'Confirm password'),
-                obscureText: true,
-                validator: Validations.instance.password,
-                onSaved: (String val) {
-                  _passwordValidation = val;
-                },
-              ),
-              RaisedButton(
-                textColor: Colors.white,
-                color: Theme.of(context).buttonColor,
-                child: Text("Register"),
-                onPressed: formValidate,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15.0),
-                ),
-              ),
-              RichText(
-                text: TextSpan(
-                  text: "Already have an account? Sign in ",
-                  children: [
-                    TextSpan(
-                      text: 'here!',
-                      style: TextStyle(color: Colors.blue),
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () {
-                          widget.view();
-                        },
+      body: Stack(
+        children: <Widget>[
+          Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Color(0xFF9FA8DA),
+                  Color(0xFF7986CB),
+                  Color(0xFF5C6BC0),
+                  Color(0xFF5C6BC0),
+                ],
+              )
+            )
+          ),
+          Container(
+            height: double.infinity,
+            child: SingleChildScrollView (
+              physics: AlwaysScrollableScrollPhysics(),
+              padding: EdgeInsets.symmetric(horizontal:40, vertical:27),
+              child: Form(
+                key: _formKey,
+                autovalidate: _validateState,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      'Sign Up Information',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                      )
+                    ),
+                    SizedBox(height:30),
+                    Column(
+                      children: <Widget>[
+                        CircleAvatar (
+                          radius: 40.0,
+                          backgroundColor: Colors.white,
+                          child: Icon (
+                            Icons.person,
+                            size: 60,
+                          )
+                        )
+                      ],
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        SizedBox(height:10),
+                        TextFormField(
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: InputDecoration(
+                            icon: Icon(Icons.email, color:Colors.white,),
+                            hintText: "Email",
+                            labelText: "Enter your email for registration",
+                          ),
+                          validator: Validations.instance.emailValidation,
+                          onSaved: (String val) {
+                            _email = val;
+                          }
+                        ),
+                        SizedBox(height: 30),
+                        TextFormField(
+                          decoration: InputDecoration(
+                          hintText: "Password",
+                          labelText: "Enter a password", icon: Icon(Icons.lock, color:Colors.white,)),
+                          obscureText: true,
+                          onSaved: (String val) {
+                            _password = val;
+                          },
+                        ),
+                        SizedBox(height: 30),
+                        // TODO Write function to validate passwords match
+                        TextFormField(
+                          decoration: InputDecoration(
+                          hintText: "Password",
+                          labelText: "Confirm Password", icon: Icon(Icons.lock, color:Colors.white,)),
+                          obscureText: true,
+                          validator: Validations.instance.password,
+                          onSaved: (String val) {
+                            _passwordValidation = val;
+                          },
+                        ),
+                      ],
+                    ),
+                    Container(
+                      padding: EdgeInsets.symmetric(vertical:17),
+                      width:double.infinity,
+                      child:RaisedButton(
+                        onPressed: formValidate,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: Text(
+                          'REGISTER',
+                          style: TextStyle(
+                          color: Color(0xFF7986CB),
+                          letterSpacing: 1.5,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          )
+                        ),
+                      )
+                    ),
+                    //SizedBox(height: 10),
+                    RichText(
+                      text: TextSpan(
+                        text: "Already have an account? ",
+                        style: TextStyle(fontSize: 16),
+                        children: [
+                          TextSpan(
+                            text: 'Log In!',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              ),
+                            recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              widget.view();
+                            },
+                          ),
+                        ],
+                      ),
                     ),
                   ],
-                ),
-              ),
-            ],
+                )
+              )
+            )
           ),
-        ),
+        ]
       ),
     );
   }

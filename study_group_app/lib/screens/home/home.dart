@@ -30,22 +30,25 @@ class _HomePageState extends State<HomePage> {
         // its' child is a ListView that holds all the elements held in the drawer
         drawer: MainDrawer(),
         persistentFooterButtons: <Widget>[
-          RaisedButton(
-            onPressed: () {
-              Navigator.of(context).pushNamed("/select-classes");
-            },
+          RaisedButton.icon(
+            onPressed: () {},
             color: Colors.blueAccent,
-            child: Text('Add Classes'),
+            label: Text('Find Group'),
+            icon: Icon(Icons.search),
+            //Icon(Icons.search),
+            //children:
+            //child: Icon(Icons.search),
           )
         ],
         body: GroupView(),
 
         // Back on the home page. This is the button at the bottom of the page
-        floatingActionButton: FloatingActionButton.extended(
-            onPressed: null, // Doesn't actually do anything yet
-            label: Text('Find Group'),
-            backgroundColor: Theme.of(context).buttonColor,
-            icon: Icon(Icons.search)));
+        // floatingActionButton: FloatingActionButton.extended(
+        //     onPressed: null, // Doesn't actually do anything yet
+        //     label: Text('Find Group'),
+        //     backgroundColor: Theme.of(context).buttonColor,
+        //     icon: Icon(Icons.search))
+      );
   }
 
   // Testing for Firebase iOS Configuration
