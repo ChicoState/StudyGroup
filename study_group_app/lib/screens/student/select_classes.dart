@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/semantics.dart';
+// import 'package:flutter/semantics.dart';
 //import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:study_group_app/screens/student/calendar.dart';
+// import 'package:study_group_app/screens/student/calendar.dart';
 import 'package:study_group_app/screens/student/courses.dart';
 
 // Stateful course schedule page class.
@@ -22,7 +22,7 @@ class _MyCourseFormState extends State<CourseSchedulePage> {
   TextEditingController courseTimeController = TextEditingController();
 
   // Form data
-  DateTime _dateTime;
+  // DateTime _dateTime;
 
   void dispose() {
     courseNameController.dispose();
@@ -30,7 +30,6 @@ class _MyCourseFormState extends State<CourseSchedulePage> {
     courseTimeController.dispose();
     super.dispose();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -46,25 +45,24 @@ class _MyCourseFormState extends State<CourseSchedulePage> {
               child: Center(
                 child: Column(
                   children: <Widget>[
-                      TextFormField (
-                          //controller: courseNameController,
-                          cursorColor: Colors.black,
-                          decoration: InputDecoration(
-                            hintText: "Enter your class name",
-                            hintStyle:TextStyle(color: Colors.black),
-                            border: OutlineInputBorder(),
-                          ),
+                    TextFormField(
+                      //controller: courseNameController,
+                      cursorColor: Colors.black,
+                      decoration: InputDecoration(
+                        hintText: "Enter your class name",
+                        hintStyle: TextStyle(color: Colors.black),
+                        border: OutlineInputBorder(),
                       ),
-                      TextFormField (
+                    ),
+                    TextFormField(
                         //controller: courseDayController,
                         cursorColor: Colors.black,
                         decoration: InputDecoration(
                           hintText: "Enter the Day",
                           hintStyle: TextStyle(color: Colors.black),
                           border: OutlineInputBorder(),
-                        )
-                      ),
-                      TextFormField (
+                        )),
+                    TextFormField(
                         //controller: courseTimeController,
                         cursorColor: Colors.black,
                         keyboardType: TextInputType.datetime,
@@ -73,21 +71,21 @@ class _MyCourseFormState extends State<CourseSchedulePage> {
                           hintStyle: TextStyle(color: Colors.black),
                           border: OutlineInputBorder(),
                         )),
-                        SizedBox(
-                          width: 320,
-                          child: FlatButton(
-                            onPressed: () {
-                              Navigator.push(context,
+                    SizedBox(
+                      width: 320,
+                      child: FlatButton(
+                        onPressed: () {
+                          Navigator.push(context,
                               MaterialPageRoute(builder: (context) => CourseViewerState()));
                         },
                         child: Text("Submit"),
                         color: Colors.blueAccent,
-                        ),
-                        )
-                    ]
-                  ,)
-                ,)
-              ,)
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            )
           ],
         ),
       ),

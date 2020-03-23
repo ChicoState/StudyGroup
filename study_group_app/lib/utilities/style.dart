@@ -8,24 +8,25 @@ ThemeData appTheme() {
       primaryColor: Colors.grey[900],
       brightness: Brightness.light,
       accentColor: Color(0xFF212121),
-      //cursorColor: Colors.black,
       // secondaryHeaderColor: Color(0xff007c91),
+
       secondaryHeaderColor: Colors.grey[600],
-      hintColor: Color(0xffffffff),
+      // hintColor: Colors.grey[400],
       textTheme: TextTheme(
           body1: TextStyle(color: Colors.white),
           headline: TextStyle(color: Colors.black),
           caption: TextStyle(color: Colors.white)),
       dividerColor: Colors.grey[700],
-      //buttonColor: Colors.black,
+      inputDecorationTheme: InputDecorationTheme(
+        labelStyle: TextStyle(
+          color: Colors.white,
+        ),
+        hintStyle: TextStyle(
+            color: Colors.grey[400],
+            fontWeight: FontWeight.w100,
+            fontSize: 12.0),
+      ),
       scaffoldBackgroundColor: Colors.white,
       canvasColor: Colors.grey[300],
-      backgroundColor: Colors.grey[700]
-      );
-}
-
-class Fonts {
-  static const baseTextStyle = TextStyle(fontFamily: 'Poppins');
-  static const headerTextStyle = TextStyle(
-      fontFamily: 'Poppins', fontSize: 18, fontWeight: FontWeight.w600);
+      backgroundColor: Colors.grey[700]);
 }

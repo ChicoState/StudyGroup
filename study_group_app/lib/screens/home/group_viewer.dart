@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../models/groups.dart';
-import '../../theme/style.dart';
 
 class GroupView extends StatefulWidget {
   GroupView({Key key}) : super(key: key);
@@ -31,7 +30,7 @@ class _GroupState extends State<GroupView> {
 
               // Following Widgets are contents of each user's group.
               // TODO Style and design
-              Text(group.name, style: Fonts.headerTextStyle),
+              Text(group.name),
               Container(
                   margin: EdgeInsets.symmetric(vertical: 8.0),
                   height: 1.5,

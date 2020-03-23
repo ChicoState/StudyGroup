@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:study_group_app/services/auth.dart';
-import 'package:study_group_app/screens/student/courses.dart';
 
 final Auth _auth = Auth();
 
@@ -32,7 +31,7 @@ class MainDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.class_),
             title: Text('My Courses'),
-            onTap: (){
+            onTap: () {
               Navigator.of(context).pushNamed("/select-classes");
             },
           ),

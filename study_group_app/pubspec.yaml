@@ -38,6 +38,8 @@ dependencies:
   table_calendar: ^2.2.2
   #syncfusion_flutter_calendar: ^17.4.51-beta
 
+  font_awesome_flutter: ^8.7.0
+
 
 dependency_overrides:
   firebase_core: 0.4.4

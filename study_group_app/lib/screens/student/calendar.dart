@@ -6,18 +6,16 @@
 
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:study_group_app/screens/student/select_classes.dart';
+// import 'package:study_group_app/screens/student/select_classes.dart';
 
 // Displays the given information
 class MyCalendarPageState extends StatefulWidget {
-  
   // Creates the stateful widget HomePage
   @override
   _MyCalendarPageState createState() => _MyCalendarPageState();
 }
 
 class _MyCalendarPageState extends State<MyCalendarPageState> {
-
   // Controllers
   CalendarController _calendarController;
 
@@ -42,8 +40,6 @@ class _MyCalendarPageState extends State<MyCalendarPageState> {
   }
   // Calendar display
 
-
-
   /*
   @override
   Widget build(BuildContext context) {
@@ -67,7 +63,6 @@ class course {
   String courseID;
   DateTime start;
   DateTime finish;
-  
 }
 
 /* ----- Depreciated Code ----- */
