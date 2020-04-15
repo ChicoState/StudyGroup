@@ -33,9 +33,6 @@ class _MyCourseFormState extends State<CourseSchedulePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Add your Class Schedule'),
-      ),
       drawer: MainDrawer(),
       body: SingleChildScrollView(
         child: Stack(

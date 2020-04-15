@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:study_group_app/screens/groups/add_group.dart';
 import 'drawer.dart';
 import 'package:study_group_app/models/user.dart';
 import 'package:study_group_app/screens/student/select_classes.dart';
@@ -18,10 +19,11 @@ class HomePage extends StatefulWidget {
 
 // Inherits from HomePage above
 class _HomePageState extends State<HomePage> {
+  var appBarTitle = "Home";
   int _selectedPage = 0;
   final _pageOptions = [
     GroupView(),
-    CourseSchedulePage(),
+    CreateGroup(),
   ];
 
   @override
@@ -38,7 +40,7 @@ class _HomePageState extends State<HomePage> {
       child: Scaffold(
         backgroundColor: Theme.of(context).backgroundColor,
         appBar: AppBar(
-          title: Text("Home"),
+          title: Text(appBarTitle),
         ),
         drawer: MainDrawer(),
         body: SafeArea(
@@ -48,19 +50,29 @@ class _HomePageState extends State<HomePage> {
             children: _pageOptions,
           ),
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          currentIndex: _selectedPage,
-          onTap: (index) {
-            setState(() {
-              _selectedPage = index;
-            });
-          },
-          items: allDestinations.map((Destination destination) {
-            return BottomNavigationBarItem(
-                icon: Icon(destination.icon), title: Text(destination.title));
-          }).toList(),
+        bottomNavigationBar: Theme(
+          data: Theme.of(context).copyWith(
+            canvasColor: Colors.grey[900],
+            primaryColor: Colors.grey[300],
+            textTheme: Theme.of(context)
+                .textTheme
+                .copyWith(title: TextStyle(color: Colors.white)),
+          ),
+          child: BottomNavigationBar(
+            currentIndex: _selectedPage,
+            onTap: (int index) {
+              setState(() {
+                _selectedPage = index;
+                appBarTitle = allDestinations[index].title;
+              });
+            },
+            items: allDestinations.map((Destination destination) {
+              return BottomNavigationBarItem(
+                  icon: Icon(destination.icon), title: Text(destination.title));
+            }).toList(),
+          ),
         ),
-      ),
+      )
     );
   }
 
@@ -70,13 +82,13 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
+// Bottom navigation bar constructors
 class Destination {
   const Destination(this.title, this.icon);
   final String title;
   final IconData icon;
 }
 
-// Bottom navigation bar constructors
 const List<Destination> allDestinations = <Destination>[
   Destination('Home', Icons.home),
   // Destination('Profile', Icons.portrait),

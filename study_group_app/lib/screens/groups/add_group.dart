@@ -34,9 +34,6 @@ class _CreateGroupFormState extends State<CreateGroup> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Color(0xFF80CBC4),
-        appBar: AppBar(
-          title: Text('New Group'),
-        ),
         body: Stack(children: <Widget>[
           Container(
               padding: EdgeInsets.symmetric(horizontal: 40, vertical: 50),

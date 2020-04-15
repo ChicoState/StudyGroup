@@ -7,7 +7,6 @@
  */
 
 import 'package:flutter/material.dart';
-import 'package:study_group_app/screens/home/navigation_bar.dart';
 
 class CourseViewerState extends StatelessWidget {
   @override
