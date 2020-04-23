@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:study_group_app/screens/groups/group_detail.dart';
-import '../../models/groups.dart';
-import 'dart:math';
+import 'package:study_group_app/models/groups.dart';
 
 class GroupDetail extends StatelessWidget {
   final Group group;
@@ -44,7 +42,7 @@ class GroupDetail extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 cardText('Day of session:'.toUpperCase(), textColor),
-                cardText('${group.meetDay}\n', textColor),
+                cardText('${group.day}\n', textColor),
                 cardText('Time of session:'.toUpperCase(), textColor),
                 cardText('${group.startTime} - ${group.endTime}\n', textColor),
                 cardText('Course ID:'.toUpperCase(), textColor),

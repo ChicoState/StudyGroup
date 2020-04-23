@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:study_group_app/screens/groups/add_group.dart';
 import 'drawer.dart';
 import 'package:study_group_app/models/user.dart';
-import 'package:study_group_app/screens/student/select_classes.dart';
+// import 'package:study_group_app/screens/student/select_classes.dart';
 import 'package:study_group_app/services/group_provider.dart';
 import 'package:study_group_app/screens/groups/group_viewer.dart';
 import 'package:study_group_app/models/groups.dart';
@@ -72,7 +72,7 @@ class _HomePageState extends State<HomePage> {
             }).toList(),
           ),
         ),
-      )
+      ),
     );
   }
 

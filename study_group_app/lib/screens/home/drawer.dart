@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:study_group_app/screens/student/courses.dart';
+// import 'package:study_group_app/screens/student/courses.dart';
 import 'package:study_group_app/services/auth.dart';
 
 final Auth _auth = Auth();

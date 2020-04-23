@@ -13,7 +13,7 @@ class Validations {
   // Email validation
   String password(String pass) {
     // Ensure password is at least 6 characters but not more than 20
-    const Pattern p = r'^[A-Za-z0-8]{6,20}$';
+    const Pattern p = r'^[A-Za-z0-9]{6,20}$';
     final RegExp regExp = RegExp(p);
     return !regExp.hasMatch(pass)
         ? 'Please enter a password between 6 and 20 characters'

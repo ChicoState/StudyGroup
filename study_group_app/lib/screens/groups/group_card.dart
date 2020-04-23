@@ -33,20 +33,17 @@ class GroupCard extends StatelessWidget {
           // Call the group_detail page to view
           onTap: () {
             final Color randColor = Color.fromRGBO(Random().nextInt(255),
-                                                   Random().nextInt(255),
-                                                   Random().nextInt(255),
-                                                   1.0);
+                Random().nextInt(255), Random().nextInt(255), 1.0);
             final Color textColor = randColor.computeLuminance() > 0.45
-                                      ? Colors.black : Colors.white;
-            Navigator.push(context,
-                    MaterialPageRoute(builder: (context) =>
-                      GroupDetail(
-                          group: group,
-                          bgColor: randColor,
-                          textColor: textColor
-                      )
-                    )
-                  );
+                ? Colors.black
+                : Colors.white;
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => GroupDetail(
+                    group: group, bgColor: randColor, textColor: textColor),
+              ),
+            );
           },
           child: Container(
             margin: EdgeInsets.fromLTRB(50.0, 16.0, 16.0, 20.0),
@@ -64,7 +61,11 @@ class GroupCard extends StatelessWidget {
                     width: 40.0,
                     color: Colors.grey),
                 Row(
-                  children: <Widget>[Expanded(child: Text(group.meetDay))],
+                  children: <Widget>[
+                    Expanded(
+                      child: Text(group.day),
+                    )
+                  ],
                 ),
                 Row(
                   children: <Widget>[

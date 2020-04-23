@@ -3,7 +3,6 @@ import 'package:study_group_app/screens/groups/group_detail.dart';
 import 'package:study_group_app/screens/student/select_classes.dart';
 import 'package:study_group_app/screens/student/courses.dart';
 import 'package:study_group_app/screens/groups/group_viewer.dart';
-import 'package:study_group_app/screens/home/home.dart';
 import 'package:study_group_app/screens/wrapper.dart';
 
 class Routes {
@@ -30,8 +29,3 @@ class Routes {
     }
   }
 }
-
-// routes: <String, WidgetBuilder>{
-// "/select-classes": (BuildContext context) => CourseSchedulePage(),
-// }
-// }
