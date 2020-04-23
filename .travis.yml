@@ -1,4 +1,0 @@
-language: dart
-cache:
-    directories:
-      - $HOME/.pub-cache
