@@ -7,38 +7,15 @@ import 'package:study_group_app/screens/home/home.dart';
 
 void main () {
 
-  // Helper Function: Tests separate widget by embedding it within a standalone MaterialApp()
-  Widget makeTestableWidget({Widget child}) {
-    return MaterialApp(
-      home: child,
-    );
-  }
-
-  /* ------ Testing Basic UI -----*/
-
-  group( 'Page navigation between tabs', () {
-
-
-  });
-
-  /*
   group( 'Creating new group study session.', () {
-    testWidgets('Simple study group input that follows all rules.', (WidgetTester tester) async {
 
-      CreateGroup page = CreateGroup();
-      // Invokes the CreateGroup form
-      await tester.pumpWidget(makeTestableWidget(child: page));
-
-      // Imitate user input
-      await tester.enterText(find.byType(TextFormField), "MyTestGroup"); // Group Name
-      // Calls build method in widget
-      await tester.pump();
-
-      // Set Expectations
-      expect(find.text('MyTestGroup'), findsOneWidget);
+    // Tests group card
+    test('New group study session appear as card on home page', (){
+      HomePage test_homepage = HomePage();
     });
   });
 }
+/*
 void main() {
   group( 'Creating new group study session.', () {
 
