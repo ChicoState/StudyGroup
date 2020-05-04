@@ -1,18 +1,76 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:study_group_app/screens/groups/group_card.dart';
+import 'package:provider/provider.dart';
+import 'package:study_group_app/screens/groups/add_group.dart';
+import 'package:study_group_app/screens/home/home.dart';
+//import 'package:cloud_firestore_mocks/cloud_firestore_mocks.dart';
 
+void main () {
+
+  // Helper Function: Tests separate widget by embedding it within a standalone MaterialApp()
+  Widget makeTestableWidget({Widget child}) {
+    return MaterialApp(
+      home: child,
+    );
+  }
+
+  /* ------ Testing Basic UI -----*/
+
+  group( 'Page navigation between tabs', () {
+
+
+  });
+
+  /*
+  group( 'Creating new group study session.', () {
+    testWidgets('Simple study group input that follows all rules.', (WidgetTester tester) async {
+
+      CreateGroup page = CreateGroup();
+      // Invokes the CreateGroup form
+      await tester.pumpWidget(makeTestableWidget(child: page));
+
+      // Imitate user input
+      await tester.enterText(find.byType(TextFormField), "MyTestGroup"); // Group Name
+      // Calls build method in widget
+      await tester.pump();
+
+      // Set Expectations
+      expect(find.text('MyTestGroup'), findsOneWidget);
+    });
+  });
+}
 void main() {
   group( 'Creating new group study session.', () {
 
     // Tests group card
     test('New group study session appear as card on home page', (){
-      TimeOfDay _startTime;
-      TimeOfDay _endTime;
-      String groupName;
-      String day;
-      int maxMembers;
-      String location;
+      /* 1. Difficult to test because group depends on userID
+       *
+       */
+
+      // Create the testing group
+      Group newTestGroup = Group(
+        name: "Testing",
+        day: "Monday",
+        startTime: "12:00",
+        endTime: "1:00",
+        maxMembers: 5,
+        location: "Library",
+      );
+
+      // Save to Firebase
+      final _db = GroupProvider();
+      _db.userUid = "12345";
+      dynamic result = _db.createGroup(newTestGroup);
+      _db.createGroup(newTestGroup);
+
+      // Read new card
+      final Group testGroups;
+      final cards = GroupView();
+
+      // Set expectations
+      expect(cards.);
     });
   });
 }
+*/
