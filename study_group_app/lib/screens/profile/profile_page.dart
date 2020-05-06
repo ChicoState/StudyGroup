@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:study_group_app/models/user.dart';
-import 'package:study_group_app/screens/profile/settings_view.dart';
+import 'package:study_group_app/screens/profile/settings_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class ProfilePage extends StatelessWidget {
+class Profile extends StatelessWidget {
   final User user;
-  ProfilePage({this.user});
+  Profile({this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class ProfilePage extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ProfileSettingsPage(user: user)));
+                MaterialPageRoute(builder: (context) => ProfileSettings(user: user)));
             },
           )
         ],
@@ -52,7 +52,7 @@ class ProfilePage extends StatelessWidget {
               SizedBox(height: 25.0,),
 
               // Retrieve username from Firestore
-              Text('${user.email}',
+              Text('${user.firstName} ${user.lastName}',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 24,
@@ -93,9 +93,4 @@ class ProfilePage extends StatelessWidget {
       ),
     );
   }
-    
-  void _navigateToSettings(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfileSettingsPage(user: user)));
-  }
-  
 }

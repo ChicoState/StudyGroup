@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> {
                   index: _selectedPage,
                   children: [
                     GroupView(),
-                    ProfilePage(),
+                    Profile(user: user),
                     FindGroup(curUserId: user.uid),
                     CreateGroup()
                   ],
