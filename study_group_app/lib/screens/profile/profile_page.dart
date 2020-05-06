@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:study_group_app/models/user.dart';
-import 'package:study_group_app/screens/student/courses.dart';
-import 'package:study_group_app/screens/student/select_classes.dart';
+import 'package:study_group_app/screens/profile/settings_view.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -13,7 +12,19 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // Transparent appbar for settings
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        actions: <Widget> [
+          IconButton(
+            icon: Icon(Icons.more_vert, size: 40.0), 
+            onPressed: () {_navigateToSettings(context);},
+          )
+        ],
+      ), 
       backgroundColor: Color(0xFF80CBC4),
+
       body: ListView(
         children: <Widget>[
           SizedBox(height: 50.0,),
@@ -25,17 +36,14 @@ class _ProfilePageState extends State<ProfilePage> {
               Container(
                 height: 125.0,
                 width: 125.0,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(62.5),
-                  border: Border.all(
-                    width: 3,
-                    color: Colors.white10
+                child: CircleAvatar(
+                  radius: 60,
+                  backgroundColor: Colors.grey.shade300,
+                  child: FaIcon(
+                    FontAwesomeIcons.solidUser,
+                    size: 90, 
+                    color: Colors.white
                   ),
-                  image: DecorationImage(
-                    // Possibly change NetworkImage to user-customizable AssetImage
-                    image: NetworkImage('http://barrysforhair.com/wp-content/uploads/2017/11/default_photo.jpeg'),
-                    fit: BoxFit.cover,
-                  )
                 ),
               ),
 
@@ -77,11 +85,15 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ),
               ),
-
             ]
           )
         ],
       ),
     );
   }
+    
+  void _navigateToSettings(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfileSettingsPage()));
+  }
+  
 }
