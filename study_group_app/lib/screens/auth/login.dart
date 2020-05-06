@@ -37,8 +37,6 @@ class _LoginPageState extends State<LoginPage> {
     if (result == null) {
       setState(() => error = 'Wrong email or password');
       loading = false;
-    } else {
-      setState(() => _validateState = true);
     }
   }
 
@@ -51,8 +49,6 @@ class _LoginPageState extends State<LoginPage> {
         : Scaffold(
             backgroundColor: Theme.of(context).backgroundColor,
             appBar: AppBar(
-              // backgroundColor: Theme.of(context).backgroundColor,
-              backgroundColor: Colors.black,
               title: Text('Log In'),
             ),
             body: Stack(
@@ -63,8 +59,8 @@ class _LoginPageState extends State<LoginPage> {
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                       colors: [
-                        Color(0xFF30CFD0),
-                        Color(0xFF330867),
+                        Color(0XFF64b3f4),
+                        Color(0xFFc2e59c),
                       ],
                     ),
                   ),
@@ -86,6 +82,7 @@ class _LoginPageState extends State<LoginPage> {
                             style: TextStyle(
                               fontSize: 30,
                               fontWeight: FontWeight.bold,
+                              color: Colors.white,
                             ),
                           ),
                           SizedBox(height: 30),
@@ -143,7 +140,7 @@ class _LoginPageState extends State<LoginPage> {
                               child: Text(
                                 'LOGIN',
                                 style: TextStyle(
-                                  color: Color(0xFF316CC6),
+                                  color: Color(0XFF599ECA),
                                   letterSpacing: 1.5,
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
@@ -157,6 +154,7 @@ class _LoginPageState extends State<LoginPage> {
                                 ' - OR - ',
                                 style: TextStyle(
                                   fontWeight: FontWeight.w500,
+                                  color: Colors.white
                                 ),
                               ),
                               SizedBox(height: 30),

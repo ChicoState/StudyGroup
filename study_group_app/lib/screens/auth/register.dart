@@ -62,8 +62,8 @@ class _RegisterState extends State<Register> {
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                       colors: [
-                        Color(0xFF30CFD0),
-                        Color(0xFF330867),
+                        Color(0XFF64b3f4),
+                        Color(0xFFc2e59c),
                       ],
                     ),
                   ),
@@ -94,7 +94,7 @@ class _RegisterState extends State<Register> {
                                 radius: 40.0,
                                 backgroundColor: Colors.white,
                                 child: FaIcon(FontAwesomeIcons.solidUser,
-                                    size: 60, color: Colors.grey[800]),
+                                    size: 57, color: Colors.grey[800]),
                               ),
                             ],
                           ),
@@ -150,7 +150,7 @@ class _RegisterState extends State<Register> {
                               child: Text(
                                 'REGISTER',
                                 style: TextStyle(
-                                  color: Color(0xFF316CC6),
+                                  color: Color(0xFF599ECA),
                                   letterSpacing: 1.5,
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,

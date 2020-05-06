@@ -1,9 +1,11 @@
 // This file is mainly serving as static data for now. Will update to integrate
 // Firebase data when that is setup
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class Group {
-  final int id;
+  final String id;
   final String name;
-  var memberIds;
+  List<dynamic> memberIds;
   final String day;
   final String startTime;
   final String endTime;
@@ -23,12 +25,26 @@ class Group {
   factory Group.fromMap(Map data) {
     return Group(
       name: data['name'] ?? '',
-      memberIds: data['memberIds'] ?? '',
+      memberIds: data['memberIds'] as List ?? [],
       maxMembers: data['maxMembers'] ?? '',
       day: data['day'] ?? '',
       startTime: data['startTime'] ?? '',
       endTime: data['endTime'] ?? '',
       location: data['location'] ?? '',
+    );
+  }
+
+  factory Group.fromFirestore(DocumentSnapshot doc) {
+    var map = doc.data;
+    return Group(
+      id: doc.documentID,
+      name: map['name'] ?? '',
+      memberIds: map['memberIds'] as List ?? [],
+      maxMembers: map['maxMembers'] ?? '',
+      day: map['day'] ?? '',
+      startTime: map['startTime'] ?? '',
+      endTime: map['endTime'] ?? '',
+      location: map['location'] ?? '',
     );
   }
 }

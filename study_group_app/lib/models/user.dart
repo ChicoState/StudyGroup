@@ -1,9 +1,6 @@
-class User {
-  final String uid;
-  User({this.uid});
-}
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-class UserData {
+class User {
   final String uid;
   final String email;
   final String userName;
@@ -11,7 +8,7 @@ class UserData {
   final String lastName;
   var groups;
 
-  UserData(
+  User(
       {this.uid,
       this.email,
       this.userName,
@@ -19,13 +16,15 @@ class UserData {
       this.lastName,
       this.groups});
 
-  factory UserData.fromMap(Map data) {
-    return UserData(
-      email: data['email'] ?? '',
-      userName: data['userName'] ?? '',
-      firstName: data['firstName'] ?? '',
-      lastName: data['lastName'] ?? '',
-      groups: data['groups'] ?? '',
+  factory User.fromFirestore(DocumentSnapshot doc) {
+    Map map = doc.data;
+    return User(
+      uid: doc.documentID,
+      email: map['email'] ?? '',
+      userName: map['userName'] ?? '',
+      firstName: map['firstName'] ?? '',
+      lastName: map['lastName'] ?? '',
+      groups: map['groups'] ?? '',
     );
   }
 }

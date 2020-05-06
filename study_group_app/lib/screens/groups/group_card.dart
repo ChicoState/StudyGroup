@@ -54,7 +54,13 @@ class GroupCard extends StatelessWidget {
 
                 // Following Widgets are contents of each user's group.
                 // TODO Style and design
-                Text(group.name),
+                Text(
+                  group.name,
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                  )
+                ),
                 Container(
                     margin: EdgeInsets.symmetric(vertical: 8.0),
                     height: 1.5,

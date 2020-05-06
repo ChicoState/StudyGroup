@@ -1,10 +1,10 @@
 import 'package:study_group_app/models/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class UserProvider {
+class UserService {
   final String uid;
 
-  UserProvider({this.uid});
+  UserService({this.uid});
 
   // A reference to the users collection in Firebase
   final CollectionReference userCollection =
@@ -29,11 +29,11 @@ class UserProvider {
   }
 
   // Provides stream of user data to the app
-  Stream<UserData> get userData {
+  Stream<User> get userData {
     // return userCollection.document(uid).snapshots().map(_userData);
     return userCollection
         .document(uid)
         .snapshots()
-        .map((snap) => UserData.fromMap(snap.data));
+        .map((snap) => User.fromFirestore(snap));
   }
 }

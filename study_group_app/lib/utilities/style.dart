@@ -4,17 +4,27 @@ ThemeData appTheme() {
   // These are all parameters of ThemeData. We can set them here and then use
   // throughout the app.
   return ThemeData(
+      appBarTheme: AppBarTheme(
+        color: Color(0xFF437c90),
+      ),
+      primaryTextTheme: TextTheme(
+        title: TextStyle(
+          fontFamily: 'Rubik',
+          fontSize: 29,
+          letterSpacing: 1.0,
+        )
+      ),
+      
+      
       // To use hex colors, use Color() and prefix hex with 0xff
       primaryColor: Colors.grey[900],
       brightness: Brightness.light,
-      //accentColor: Color(0xFF212121),
-      accentColor: Colors.black54,
+      accentColor: Colors.white,
       // secondaryHeaderColor: Color(0xff007c91),
-
       secondaryHeaderColor: Colors.grey[600],
       // hintColor: Colors.grey[400],
       textTheme: TextTheme(
-          body1: TextStyle(color: Colors.white),
+          body1: TextStyle(color: Colors.black),
           headline: TextStyle(color: Colors.black),
           caption: TextStyle(color: Colors.white)),
       dividerColor: Colors.grey[700],
@@ -30,5 +40,7 @@ ThemeData appTheme() {
       scaffoldBackgroundColor: Colors.white,
       // Background color of bottom navbar
       canvasColor: Colors.grey[300],
-      backgroundColor: Colors.grey[700]);
+      backgroundColor: Color(0xFF98c1d9));
+      //backgroundColor: Colors.grey[700]);
+     
 }
