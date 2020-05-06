@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:study_group_app/models/user.dart';
 import 'package:study_group_app/screens/profile/settings_view.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+class ProfilePage extends StatelessWidget {
+  final User user;
+  ProfilePage({this.user});
 
-class ProfilePage extends StatefulWidget {
-  @override
-  _ProfilePageState createState() => _ProfilePageState();
-}
-
-class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,11 +17,15 @@ class _ProfilePageState extends State<ProfilePage> {
         actions: <Widget> [
           IconButton(
             icon: Icon(Icons.more_vert, size: 40.0), 
-            onPressed: () {_navigateToSettings(context);},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProfileSettingsPage(user: user)));
+            },
           )
         ],
-      ), 
-      backgroundColor: Color(0xFF80CBC4),
+      ),
+      backgroundColor: Theme.of(context).backgroundColor, 
 
       body: ListView(
         children: <Widget>[
@@ -50,7 +52,7 @@ class _ProfilePageState extends State<ProfilePage> {
               SizedBox(height: 25.0,),
 
               // Retrieve username from Firestore
-              Text('Asheela Magwili',
+              Text('${user.email}',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 24,
@@ -78,7 +80,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   child: Text(
                     'CLASSES',
                     style: TextStyle(
-                      color: Color(0xFF80CBC4),
+                      color: Color(0xFF98c1d9),
                       letterSpacing: 1.5,
                       fontSize: 14,
                     ),
@@ -93,7 +95,7 @@ class _ProfilePageState extends State<ProfilePage> {
   }
     
   void _navigateToSettings(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfileSettingsPage()));
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfileSettingsPage(user: user)));
   }
   
 }

@@ -1,21 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:study_group_app/models/user.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class ProfileSettingsPage extends StatefulWidget {
-  @override
-  _ProfileSettingsPageState createState() => _ProfileSettingsPageState();
-}
+class ProfileSettingsPage extends StatelessWidget {
+  final User user;
+  ProfileSettingsPage({this.user});
 
-class _ProfileSettingsPageState extends State<ProfileSettingsPage> {
-  TextEditingController emailController = new TextEditingController();
-  TextEditingController nameController = new TextEditingController();
-  TextEditingController displaynameController = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade800,
+      backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
-        backgroundColor: Colors.grey[900],
+        backgroundColor: Theme.of(context).appBarTheme.color,
         title: Text('Edit Profile'),
       ),
       body: SingleChildScrollView(
@@ -49,7 +45,7 @@ class _ProfileSettingsPageState extends State<ProfileSettingsPage> {
                     onTap: () {
                       // Action to edit password in Firebase
                     },
-                    title: Text('Change Name'), // Grab from Firebase
+                    title: Text('${user.email}'), // Grab from Firebase
                     leading: Icon(Icons.portrait),
                     trailing: Icon(Icons.edit),
                   ),

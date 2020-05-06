@@ -5,6 +5,7 @@ import 'package:study_group_app/models/models.dart';
 import 'package:study_group_app/screens/groups/groups.dart';
 import 'package:study_group_app/services/services.dart';
 import 'package:study_group_app/utilities/loading.dart';
+import 'package:study_group_app/screens/profile/profile_page.dart';
 import 'drawer.dart';
 
 // Stateful home page class.
@@ -46,6 +47,7 @@ class _HomePageState extends State<HomePage> {
                   index: _selectedPage,
                   children: [
                     GroupView(),
+                    ProfilePage(),
                     FindGroup(curUserId: user.uid),
                     CreateGroup()
                   ],
