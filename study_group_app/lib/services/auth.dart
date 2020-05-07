@@ -43,10 +43,39 @@ class Auth {
     }
   }
 
-  Future changeFirebaseUserEmail(String email) async {
+  Future changeFirebaseUserEmail(String email, String curPass) async {
     FirebaseUser user = await _auth.currentUser();
+    // Reauthenticate user before changing the email
+    var credential = EmailAuthProvider.getCredential(
+        email: user.email, password: curPass.trim());
+    await user.reauthenticateWithCredential(credential);
+
     try {
       return user.updateEmail(email);
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
+  }
+
+  Future changePassword(String curPassword, String newPassword) async{
+   // Create an instance of the current user. 
+    FirebaseUser user = await _auth.currentUser();
+    // Reauthenticate user before changing password
+    var credential = EmailAuthProvider.getCredential(
+        email: user.email, password: curPassword.trim());
+    await user.reauthenticateWithCredential(credential);
+    // Needs a catch when password is invalid
+
+    try {
+      // Pass in the password to updatePassword.
+      await user.updatePassword(newPassword)
+        .then((_){
+          print("Succesfull changed password");
+        }).catchError((error){
+          print("Password can't be changed" + error.toString());
+          //This might happen, when the wrong password is in, the user isn't found, or if the user hasn't logged in recently.
+        });
     } catch (e) {
       print(e.toString());
       return null;
