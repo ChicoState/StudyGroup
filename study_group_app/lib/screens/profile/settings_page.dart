@@ -1,11 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:study_group_app/models/user.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:study_group_app/services/user_service.dart';
 import 'package:study_group_app/services/auth.dart';
-import 'package:provider/provider.dart';
 import 'package:study_group_app/utilities/loading.dart';
 
 //class ProfileSettingsPage extends StatelessWidget {
@@ -23,7 +20,9 @@ class _ProfileSettingsState extends State<ProfileSettings> {
   // Controls validation state for form fields
   final _formKey = GlobalKey<FormState>();
   final _validateKey = GlobalKey<FormState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   String error = '';
+  String _verifyTitle = '';
   bool loading = false;
   User user;
 
@@ -37,7 +36,6 @@ class _ProfileSettingsState extends State<ProfileSettings> {
 
   @override
   Widget build(BuildContext context) {
-    var testUser = Provider.of<FirebaseUser>(context);
     return StreamBuilder<User>(
       stream: UserService(uid: widget.uid).userData,
       builder: (context, snapshot) {
@@ -45,6 +43,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
           user = snapshot.data;
 
           return Scaffold(
+            key: _scaffoldKey,
             backgroundColor: Theme.of(context).backgroundColor,
             appBar: AppBar(
               backgroundColor: Theme.of(context).appBarTheme.color,
@@ -100,6 +99,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                         /* ----- Edit Email ------ */
                         ListTile(
                           onTap: () {
+                            _verifyTitle = 'Verify password';
                             // Verify user & edit email in Firebase
                             showDialog(
                               context: context,
@@ -153,6 +153,46 @@ class _ProfileSettingsState extends State<ProfileSettings> {
     );
   }
 
+
+  // Validate the form and save state
+  void formValidate(int type) {
+    if (_formKey.currentState.validate() || _validateKey.currentState.validate()) {
+      setState(() => loading = true);
+      _formKey.currentState.save();
+      if(type == 1) {
+        sendUserNameInfo();
+      }
+      else if(type == 2) {
+        sendNameInfo();
+      }
+      else if(type == 3) {
+        _validateKey.currentState.save();
+        if(sendEmailInfo() != null) {
+          // Email couldn't be changed
+         _passwordAlert(context, 'Incorrect password. Try again.');
+         Navigator.pop(context);
+        }
+        else {
+          _passwordAlert(context, 'Email changed successfully!');
+          Navigator.pop(context);
+        }
+      }
+      else if(type == 4) {
+        _validateKey.currentState.save();
+        if (sendPasswordInfo() == null) {
+          // Password couldn't be changed
+          _passwordAlert(context, 'Incorrect password. Try again.');
+          Navigator.pop(context);
+        }
+        else {
+          _passwordAlert(context, 'Password changed successfully!');
+          Navigator.pop(context);
+        }
+
+      }
+    }
+  }
+
   /* ----- Sending information to firebase ----- */
 
   // Firebase: Send username changes to Firebase after fields have been validated
@@ -187,6 +227,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
       setState(() => error = 'Could not change email.');
       loading = false;
     }
+    return result;
   }
 
   // Firebase: Send email changes to Firebase after fields have been validated
@@ -198,30 +239,6 @@ class _ProfileSettingsState extends State<ProfileSettings> {
     if (result == null) {
       setState(() => error = 'Could not change password.');
       loading = false;
-    }
-  }
-
-  /* ----- Validating Forms ----- */
-
-  // Validate the form and save state
-  void formValidate(int type) {
-    if (_formKey.currentState.validate() || _validateKey.currentState.validate()) {
-      setState(() => loading = true);
-      _formKey.currentState.save();
-      if(type == 1) {
-        sendUserNameInfo();
-      }
-      else if(type == 2) {
-        sendNameInfo();
-      }
-      else if(type == 3) {
-        _validateKey.currentState.save();
-        sendEmailInfo();
-      }
-      else if(type == 4) {
-        _validateKey.currentState.save();
-        sendPasswordInfo();
-      }
     }
   }
 
@@ -255,7 +272,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                 // Save new username to Firebase
                 onPressed: () {
                   formValidate(1);
-                  () => Navigator.pop(context);
+                  Navigator.pop(context);
                 }
             )
           ],
@@ -293,7 +310,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                   // Save new name to Firebase
                   onPressed: () {
                     formValidate(2);
-                    () => Navigator.pop(context);
+                    Navigator.pop(context);
                   }
               ),
             ]
@@ -325,7 +342,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                   // Save new email to Firebase
                   onPressed: () {
                     formValidate(3);
-                    () => Navigator.pop(context);
+                    Navigator.pop(context);
                   }
               ),
             ]
@@ -358,7 +375,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                   // Save new email to Firebase
                   onPressed: () {
                     formValidate(4);
-                    () => Navigator.pop(context);
+                    Navigator.pop(context);
                   }
               ),
             ]
@@ -370,7 +387,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
   // Validate user for email change
   Widget Function(BuildContext) validateUserForEmail() {
     return (_) => AlertDialog(
-      title: Text('Verify password'),
+      title: Text(_verifyTitle),
             content: Form(
               key: _validateKey,
               child: TextFormField(
@@ -397,7 +414,6 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                       barrierDismissible: true,
                       builder: getNewEmail(),
                     );
-                    () => Navigator.pop(context);
                   }
               ),
             ]
@@ -434,7 +450,6 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                       barrierDismissible: true,
                       builder: getNewPassword(),
                     );
-                    () => Navigator.pop(context);
                   }
               ),
             ]
@@ -448,6 +463,22 @@ class _ProfileSettingsState extends State<ProfileSettings> {
     RegExp regex = new RegExp(pattern);
     return (!regex.hasMatch(value)) ? false : true;
   }
+
+  /* ----- Snackbar Alerts ----- */
+
+  void _passwordAlert(BuildContext context, _message) {
+    _scaffoldKey.currentState.showSnackBar(
+      SnackBar(
+        duration: Duration(seconds: 3),
+        content: Row(
+          children: <Widget>[
+            Text(_message),
+          ],
+        ),
+      ),
+    );
+  }
+  
 }
 
 

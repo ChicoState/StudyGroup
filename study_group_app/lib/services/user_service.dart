@@ -46,18 +46,31 @@ class UserService {
   // Updates email within the 'users' collection
   Future updateEmail(String email, String curPassword) async {
     final Auth _auth = Auth();
-    await _auth.changeFirebaseUserEmail(email, curPassword);
-    return await userCollection
-      .document(uid)
-      .updateData({'email': email});
+    var result = await _auth.changeFirebaseUserEmail(email, curPassword);
+    if(result == 1)
+    {
+      print('Successfully changed user email.');
+      return await userCollection
+        .document(uid)
+        .updateData({'email': email}); 
+    }
+    else {
+      print('Could not change user email.');
+      return null;
+    }
   }
 
   // Updates the current user's password
   Future updatePassword(String email, String curPassword, String newPassword) async {
     final Auth _auth = Auth();
     dynamic result = await _auth.changePassword(curPassword, newPassword);
-    if(result == null){
-      print("Incorrect password/username");
+    if(result == 1) {
+      print("Successfully changed user password.");
+      return null;
+    }
+    else {
+      print("Incorrect password/username.");
+      return 1;
     }
   }
 
