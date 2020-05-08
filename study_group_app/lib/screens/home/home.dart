@@ -47,7 +47,6 @@ class _HomePageState extends State<HomePage> {
                   index: _selectedPage,
                   children: [
                     GroupView(),
-                    Profile(user: user),
                     FindGroup(curUserId: user.uid),
                     CreateGroup()
                   ],
@@ -96,7 +95,6 @@ class Destination {
 
 const List<Destination> allDestinations = <Destination>[
   Destination('Home', Icons.home),
-  Destination('Profile', Icons.portrait),
   Destination('Search', Icons.search),
   Destination('Create', Icons.add)
 ];

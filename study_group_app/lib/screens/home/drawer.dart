@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:study_group_app/models/user.dart';
 import 'package:study_group_app/services/auth.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:study_group_app/screens/profile/profile_page.dart';
+import 'package:study_group_app/screens/profile/settings_page.dart';
 import 'package:study_group_app/utilities/loading.dart';
 
 final Auth _auth = Auth();
@@ -87,19 +89,6 @@ class MainDrawer extends StatelessWidget {
                 ),
                 ListTile(
                   leading: Icon(
-                    Icons.group,
-                    color: Color(0xFF77af9c),
-                  ),
-                  title: Text(
-                    'Groups',
-                    style: TextStyle(
-                      color: Color(0xFF77af9c),
-                      fontSize: 18,
-                    ),
-                  ),
-                ),
-                ListTile(
-                  leading: Icon(
                     Icons.account_circle,
                     color: Color(0xFF77af9c),
                   ),
@@ -110,6 +99,11 @@ class MainDrawer extends StatelessWidget {
                       fontSize: 18,
                     ),
                   ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Profile(user: user)));
+                  },
                 ),
                 ListTile(
                   leading: Icon(
@@ -123,6 +117,11 @@ class MainDrawer extends StatelessWidget {
                       fontSize: 18,
                     ),
                   ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ProfileSettings(uid: user.uid, auth: _auth,)));
+                  },
                 ),
                 SizedBox(height: 180),
                 Divider(),

@@ -16,7 +16,8 @@ class Profile extends StatelessWidget {
     return Scaffold(
       // Transparent appbar for settings
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        title: Text('Profile'),
+        backgroundColor: Theme.of(context).appBarTheme.color,
         elevation: 0.0,
         actions: <Widget> [
           IconButton(
