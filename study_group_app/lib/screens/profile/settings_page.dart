@@ -197,7 +197,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
 
   // Firebase: Send username changes to Firebase after fields have been validated
   Future<void> sendUserNameInfo() async {
-    String string_uid = user.uid.toString();
+    var string_uid = user.uid.toString();
     dynamic result = UserService(uid: string_uid).updateUserName(newUserName);
     // Output appropriate error if result is null
     if (result == null) {
@@ -208,7 +208,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
 
   // Firebase: Send name changes to Firebase after fields have been validated
   Future<void> sendNameInfo() async {
-    String string_uid = user.uid.toString();
+    var string_uid = user.uid.toString();
     dynamic result_firstname = UserService(uid: string_uid).updateFirstName(newfirstName);
     dynamic result_lastname = UserService(uid: string_uid).updateLastName(newlastName);
     // Output appropriate error if result is null
@@ -220,7 +220,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
 
   // Firebase: Send email changes to Firebase after fields have been validated
   Future<void> sendEmailInfo() async {
-    String string_uid = user.uid.toString();
+    var string_uid = user.uid.toString();
     dynamic result = UserService(uid: string_uid).updateEmail(newEmail, curPassword);
     // Output appropriate error if result is null
     if (result == null) {
@@ -232,7 +232,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
 
   // Firebase: Send email changes to Firebase after fields have been validated
   Future<void> sendPasswordInfo() async {
-    String string_uid = user.uid.toString();
+    var string_uid = user.uid.toString();
     dynamic result = UserService(uid: string_uid).updatePassword(user.email, curPassword, _newPassword);
     //await widget.auth.changePassword(_newPassword);
     // Output appropriate error if result is null
@@ -268,7 +268,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
           ),
           actions: [
             FlatButton(
-                child: Text("Submit"),
+                child: Text('Submit'),
                 // Save new username to Firebase
                 onPressed: () {
                   formValidate(1);
@@ -297,7 +297,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                 },
                 onSaved: (String value) {
                   // Parse and store new first and last name value
-                  String newName = value;
+                  var newName = value;
                   var splitName = newName.split(' ');
                   newfirstName = splitName[0];
                   newlastName = splitName[1];
@@ -306,7 +306,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
             ),
             actions: [
               FlatButton(
-                  child: Text("Submit"),
+                  child: Text('Submit'),
                   // Save new name to Firebase
                   onPressed: () {
                     formValidate(2);
@@ -338,7 +338,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
             ),
             actions: [
               FlatButton(
-                  child: Text("Submit"),
+                  child: Text('Submit'),
                   // Save new email to Firebase
                   onPressed: () {
                     formValidate(3);
@@ -371,7 +371,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
             ),
             actions: [
               FlatButton(
-                  child: Text("Submit"),
+                  child: Text('Submit'),
                   // Save new email to Firebase
                   onPressed: () {
                     formValidate(4);
@@ -406,7 +406,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
             ),
             actions: [
               FlatButton(
-                  child: Text("Verify"),
+                  child: Text('Verify'),
                   onPressed: () {
                     // Get new email
                     showDialog(
@@ -442,7 +442,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
             ),
             actions: [
               FlatButton(
-                  child: Text("Verify"),
+                  child: Text('Verify'),
                   onPressed: () {
                     // Get new password
                     showDialog(
@@ -460,7 +460,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
   bool validateEmail(String value) {
     Pattern pattern =
       r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-    RegExp regex = RegExp(pattern);
+    var regex = RegExp(pattern);
     return (!regex.hasMatch(value)) ? false : true;
   }
 

@@ -44,7 +44,7 @@ class Auth {
   }
 
   Future<int> changeFirebaseUserEmail(String email, String curPass) async {
-    FirebaseUser user = await _auth.currentUser();
+    var user = await _auth.currentUser();
     // Reauthenticate user before changing the email
     var credential = EmailAuthProvider.getCredential(
         email: user.email, password: curPass.trim());
@@ -69,7 +69,7 @@ class Auth {
 
   Future<int> changePassword(String curPassword, String newPassword) async{
    // Create an instance of the current user. 
-    FirebaseUser user = await _auth.currentUser();
+    var user = await _auth.currentUser();
     // Reauthenticate user before changing password
     var credential = EmailAuthProvider.getCredential(
         email: user.email, password: curPassword.trim());
@@ -83,7 +83,7 @@ class Auth {
     // Pass in the password to updatePassword.
     await user.updatePassword(newPassword)
       .then((_){
-        print("Succesfully changed password");
+        print('Succesfully changed password');
       }).catchError((error){
         print("Password can't be changed" + error.toString());
       });

@@ -45,7 +45,8 @@ class UserService {
 
   // Updates email within the 'users' collection
   Future updateEmail(String email, String curPassword) async {
-    final Auth _auth = Auth();
+    //final Auth _auth = Auth();
+    var _auth = Auth();
     var result = await _auth.changeFirebaseUserEmail(email, curPassword);
     if(result == 1)
     {
@@ -62,14 +63,15 @@ class UserService {
 
   // Updates the current user's password
   Future updatePassword(String email, String curPassword, String newPassword) async {
-    final Auth _auth = Auth();
+    //final Auth _auth = Auth();
+    var _auth = Auth();
     dynamic result = await _auth.changePassword(curPassword, newPassword);
     if(result == 1) {
-      print("Successfully changed user password.");
+      print('Successfully changed user password.');
       return null;
     }
     else {
-      print("Incorrect password/username.");
+      print('Incorrect password/username.');
       return 1;
     }
   }

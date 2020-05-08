@@ -1,4 +1,4 @@
-import 'package:flutter_test/flutter_test.dart';
+/*import 'package:flutter_test/flutter_test.dart';
 
 void main () {
 
@@ -8,4 +8,4 @@ void main () {
     test('New group study session appear as card on home page', (){
     });
   });
-}
+}*/

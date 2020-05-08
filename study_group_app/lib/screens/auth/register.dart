@@ -125,7 +125,6 @@ class _RegisterState extends State<Register> {
                                 },
                               ),
                               SizedBox(height: 30),
-                              // TODO Write function to validate passwords match
                               TextFormField(
                                 decoration: InputDecoration(
                                   labelText: 'Confirm Password',
