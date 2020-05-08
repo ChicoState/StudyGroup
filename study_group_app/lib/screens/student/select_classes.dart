@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:study_group_app/screens/student/courses.dart';
-import 'package:study_group_app/screens/home/drawer.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 

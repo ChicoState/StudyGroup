@@ -4,7 +4,6 @@ import 'package:study_group_app/screens/profile/settings_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:study_group_app/screens/student/courses.dart';
 import 'package:study_group_app/services/auth.dart';
-import 'package:study_group_app/screens/student/select_classes.dart';
 
 class Profile extends StatelessWidget {
   final User user;
