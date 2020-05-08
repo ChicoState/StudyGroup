@@ -53,7 +53,7 @@ class _CreateGroupFormState extends State<CreateGroup> {
   ];
 
   Future<TimeOfDay> selectTime(context) async {
-    final TimeOfDay _timePicked =
+    final _timePicked =
         await showTimePicker(context: context, initialTime: TimeOfDay.now());
     if (_timePicked != null) {
       return _timePicked;
@@ -73,7 +73,7 @@ class _CreateGroupFormState extends State<CreateGroup> {
   Future<void> saveGroupToDb(context) async {
     if (validateForm()) {
       // Save group to db
-      Group newGroup = Group(
+      var newGroup = Group(
         name: groupName,
         day: day,
         startTime: _convertTime(_startTime),
@@ -86,15 +86,15 @@ class _CreateGroupFormState extends State<CreateGroup> {
       _db.userUid = curUser.uid;
       dynamic result = _db.createGroup(newGroup);
       if (result != null) {
-        _successScaffold(context, "Group created successfully!");
+        _successScaffold(context, 'Group created successfully!');
       } else {
-        print("error");
+        print('error');
       }
     }
   }
 
   String _convertTime(TimeOfDay time) {
-    return (time.hour.toString() + ":" + time.minute.toString());
+    return (time.hour.toString() + ':' + time.minute.toString());
   }
 
   void _successScaffold(BuildContext context, _message) {
@@ -139,10 +139,10 @@ class _CreateGroupFormState extends State<CreateGroup> {
                         groupName = value;
                       },
                       validator: (value) =>
-                          value.isEmpty ? "Please enter a group name" : null,
+                          value.isEmpty ? 'Please enter a group name' : null,
                       decoration: InputDecoration(
                         icon: FaIcon(FontAwesomeIcons.users),
-                        labelText: "Group Name",
+                        labelText: 'Group Name',
                       ),
                     ),
                     SizedBox(height: 15),
@@ -152,7 +152,7 @@ class _CreateGroupFormState extends State<CreateGroup> {
                       isDense: true,
                       value: selectType,
                       validator: (val) =>
-                          val.isEmpty ? "Please select a day" : null,
+                          val.isEmpty ? 'Please select a day' : null,
                       decoration: InputDecoration(
                           icon: FaIcon(FontAwesomeIcons.calendarAlt),
                           labelText: 'Day'),

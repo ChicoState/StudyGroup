@@ -34,7 +34,7 @@ class FindGroup extends StatelessWidget {
     if (result == null) {
       _scaffoldMsg(context, "ERROR: Couldn't join group");
     } else {
-      _scaffoldMsg(context, "Successfully joined group ${group.name}");
+      _scaffoldMsg(context, 'Successfully joined group ${group.name}');
     }
   }
 
@@ -52,26 +52,27 @@ class FindGroup extends StatelessWidget {
   }
 
   void _confirmJoinGroup(context, String userId, Group group) {
+    var group2 = group;
     Alert(
       context: context,
       type: AlertType.info,
-      title: "Join group ${group.name}?",
+      title: 'Join group ${group2.name}?',
       buttons: [
         DialogButton(
-            child: Text("Join"),
+            child: Text('Join'),
             onPressed: () {
               _joinGroup(context, userId, group);
               Navigator.pop(context);
             }),
         DialogButton(
-          child: Text("Cancel"),
+          child: Text('Cancel'),
           onPressed: () => Navigator.pop(context),
         )
       ],
     ).show();
   }
 
-  _groupInformation(context, Group group) {
+  void _groupInformation(context, Group group) {
     // Reusable alert style
     var alertStyle = AlertStyle(
         animationType: AnimationType.fromTop,
@@ -85,7 +86,7 @@ class FindGroup extends StatelessWidget {
             color: Colors.grey,
           ),
         ),
-        titleStyle: Theme.of(context).textTheme.headline,
+        titleStyle: Theme.of(context).textTheme.headline5,
         constraints: BoxConstraints.expand(width: 400));
 
     // Alert dialog using custom alert style
@@ -93,25 +94,25 @@ class FindGroup extends StatelessWidget {
       context: context,
       style: alertStyle,
       type: AlertType.none,
-      title: "Details for ${group.name}",
+      title: 'Details for ${group.name}',
       content: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text('Day: ${group.day}', style: Theme.of(context).textTheme.subhead),
+          Text('Day: ${group.day}', style: Theme.of(context).textTheme.subtitle1),
           Padding(padding: EdgeInsets.only(top: 2.0)),
-          Text('Class: CSCI-515', style: Theme.of(context).textTheme.subhead),
+          Text('Class: CSCI-515', style: Theme.of(context).textTheme.subtitle1),
           Padding(padding: EdgeInsets.only(top: 2.0)),
           Text('Meet time: ${_convert(group.startTime).format(context)}',
-              style: Theme.of(context).textTheme.subhead),
+              style: Theme.of(context).textTheme.subtitle1),
           Padding(padding: EdgeInsets.only(top: 2.0)),
           Text('Members: ${group.memberIds.length}/${group.maxMembers}',
-              style: Theme.of(context).textTheme.subhead),
+              style: Theme.of(context).textTheme.subtitle1),
         ],
       ),
       buttons: [
         DialogButton(
           child: Text(
-            "OK",
+            'OK',
             style: TextStyle(color: Colors.white, fontSize: 14),
           ),
           onPressed: () => Navigator.pop(context),
@@ -179,12 +180,12 @@ class FindGroup extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 20),
           child: SearchBar<Group>(
             key: Key('SearchBar'),
-            hintText: "Search for a group...",
+            hintText: 'Search for a group...',
             onSearch: _search,
             onItemFound: (Group grp, int index) {
               return _groupResults(context, grp);
             },
-            emptyWidget: Text("No groups found with that name"),
+            emptyWidget: Text('No groups found with that name'),
             searchBarStyle: SearchBarStyle(
               backgroundColor: Colors.white70,
               borderRadius: BorderRadius.circular(12.0),

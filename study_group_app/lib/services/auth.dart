@@ -13,11 +13,11 @@ class Auth {
   Future signInUserWithEmail(String email, String password) async {
     try {
       // Attempt to sign in user to Firebase
-      AuthResult result = await _auth.signInWithEmailAndPassword(
+      var result = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
 
       // Get the Firebase User object back
-      FirebaseUser user = result.user;
+      var user = result.user;
 
       // Convert Firebase User to local user object
       return user;
@@ -29,9 +29,9 @@ class Auth {
 
   Future registerNewUser(String email, String password) async {
     try {
-      AuthResult result = await _auth.createUserWithEmailAndPassword(
+      var result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
-      FirebaseUser newUser = result.user;
+      var newUser = result.user;
 
       // Create a new document in Firebase with the same uid
       await UserService(uid: newUser.uid)

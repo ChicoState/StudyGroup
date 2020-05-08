@@ -22,20 +22,8 @@ class Group {
       this.maxMembers,
       this.location});
 
-  factory Group.fromMap(Map data) {
-    return Group(
-      name: data['name'] ?? '',
-      memberIds: data['memberIds'] as List ?? [],
-      maxMembers: data['maxMembers'] ?? '',
-      day: data['day'] ?? '',
-      startTime: data['startTime'] ?? '',
-      endTime: data['endTime'] ?? '',
-      location: data['location'] ?? '',
-    );
-  }
-
   factory Group.fromFirestore(DocumentSnapshot doc) {
-    var map = doc.data;
+    Map map = doc.data;
     return Group(
       id: doc.documentID,
       name: map['name'] ?? '',

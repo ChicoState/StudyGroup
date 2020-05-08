@@ -5,7 +5,7 @@ class AboutGroup extends StatelessWidget {
   final Group group;
   const AboutGroup({Key key, this.group}) : super(key: key);
 
-  cardText(String str, Color textColor) => Row(
+  Widget _cardText(String str, Color textColor) => Row(
         children: <Widget>[
           Expanded(
             child: Align(
@@ -60,15 +60,15 @@ class AboutGroup extends StatelessWidget {
           Container(
             child: Column(
               children: <Widget>[
-                cardText('Day of session:'.toUpperCase(), Colors.black),
-                cardText('${group.day}\n', Colors.black),
-                cardText('Time of session:'.toUpperCase(), Colors.black),
-                cardText(
+                _cardText('Day of session:'.toUpperCase(), Colors.black),
+                _cardText('${group.day}\n', Colors.black),
+                _cardText('Time of session:'.toUpperCase(), Colors.black),
+                _cardText(
                     '${group.startTime} - ${group.endTime}\n', Colors.black),
-                cardText('Course ID:'.toUpperCase(), Colors.black),
-                cardText('${group.id}\n', Colors.black),
-                cardText('Max Members:'.toUpperCase(), Colors.black),
-                cardText('${group.maxMembers}\n', Colors.black),
+                _cardText('Course ID:'.toUpperCase(), Colors.black),
+                _cardText('${group.id}\n', Colors.black),
+                _cardText('Max Members:'.toUpperCase(), Colors.black),
+                _cardText('${group.maxMembers}\n', Colors.black),
               ],
             ),
           ),

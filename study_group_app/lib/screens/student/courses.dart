@@ -15,19 +15,22 @@ class CourseViewerState extends StatelessWidget {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-          title: Text("My Courses"),
-          bottom: TabBar( tabs: [
-                    Tab(text: 'CSCI430'),
-                    Tab(text: 'CINS448',),
-                    Tab(text: 'CSCI340',),
-                  ]),
-        ),
-        body: TabBarView(
-          children: [
-            getContent('Software Engineering'),
-            getContent('Computer Security'),
-            getContent('Operating Systems'),
+          title: Text('My Courses'),
+          bottom: TabBar(tabs: [
+            Tab(text: 'CSCI430'),
+            Tab(
+              text: 'CINS448',
+            ),
+            Tab(
+              text: 'CSCI340',
+            ),
           ]),
+        ),
+        body: TabBarView(children: [
+          getContent('Software Engineering'),
+          getContent('Computer Security'),
+          getContent('Operating Systems'),
+        ]),
         persistentFooterButtons: <Widget>[
           RaisedButton(
             onPressed: null,
@@ -35,7 +38,7 @@ class CourseViewerState extends StatelessWidget {
             child: Text('Edit Courses'),
           )
         ],
-      )
+      ),
     );
   }
 
@@ -53,11 +56,12 @@ class CourseViewerState extends StatelessWidget {
   }
 
   // Styles and returns a description of the class
-  Container getDescription(){
+  Container getDescription() {
     return Container(
       padding: EdgeInsets.all(15.0),
       alignment: Alignment.topCenter,
-      child: Text('Software Engineers will collaborate with entrepreneaurs to create a tech startup.',
+      child: Text(
+        'Software Engineers will collaborate with entrepreneaurs to create a tech startup.',
         style: TextStyle(
           color: Colors.black,
         ),
@@ -66,7 +70,7 @@ class CourseViewerState extends StatelessWidget {
   }
 
   // Gets the time course session meets
-  Container getTime(){
+  Container getTime() {
     return Container(
       padding: EdgeInsets.all(15.0),
       alignment: Alignment.topLeft,
@@ -88,22 +92,20 @@ class CourseViewerState extends StatelessWidget {
       child: Text(
         title,
         style: TextStyle(
-          color: Colors.black, 
+          color: Colors.black,
           fontSize: 30,
           fontWeight: FontWeight.bold,
         ),
-      )
+      ),
     );
   }
 
   // Displays button to edit courses
-  Container getButton(){
+  Container getButton() {
     return Container(
       child: RaisedButton(
         onPressed: null,
-        
       ),
     );
   }
-  
 }

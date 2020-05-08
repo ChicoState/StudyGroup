@@ -8,7 +8,7 @@ ThemeData appTheme() {
         color: Color(0xFF437c90),
       ),
       primaryTextTheme: TextTheme(
-        title: TextStyle(
+        headline6: TextStyle(
           fontFamily: 'Rubik',
           fontSize: 29,
           letterSpacing: 1.0,
@@ -24,8 +24,8 @@ ThemeData appTheme() {
       secondaryHeaderColor: Colors.grey[600],
       // hintColor: Colors.grey[400],
       textTheme: TextTheme(
-          body1: TextStyle(color: Colors.black),
-          headline: TextStyle(color: Colors.black),
+          bodyText2: TextStyle(color: Colors.black),
+          headline5: TextStyle(color: Colors.black),
           caption: TextStyle(color: Colors.white)),
       dividerColor: Colors.grey[700],
       inputDecorationTheme: InputDecorationTheme(

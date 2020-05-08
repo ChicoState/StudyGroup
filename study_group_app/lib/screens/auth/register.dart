@@ -106,7 +106,7 @@ class _RegisterState extends State<Register> {
                                 keyboardType: TextInputType.emailAddress,
                                 decoration: InputDecoration(
                                   icon: FaIcon(FontAwesomeIcons.envelope),
-                                  labelText: "Enter an email to register",
+                                  labelText: 'Enter an email to register',
                                 ),
                                 validator: Validations.instance.emailValidation,
                                 onSaved: (String val) {
@@ -116,7 +116,7 @@ class _RegisterState extends State<Register> {
                               SizedBox(height: 30),
                               TextFormField(
                                 decoration: InputDecoration(
-                                  labelText: "Enter a password",
+                                  labelText: 'Enter a password',
                                   icon: FaIcon(FontAwesomeIcons.lock),
                                 ),
                                 obscureText: true,
@@ -128,7 +128,7 @@ class _RegisterState extends State<Register> {
                               // TODO Write function to validate passwords match
                               TextFormField(
                                 decoration: InputDecoration(
-                                  labelText: "Confirm Password",
+                                  labelText: 'Confirm Password',
                                   icon: FaIcon(FontAwesomeIcons.lock),
                                 ),
                                 obscureText: true,
@@ -160,7 +160,7 @@ class _RegisterState extends State<Register> {
                           ),
                           RichText(
                             text: TextSpan(
-                              text: "Already have an account? ",
+                              text: 'Already have an account? ',
                               style: TextStyle(fontSize: 16),
                               children: [
                                 TextSpan(

@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:study_group_app/models/groups.dart';
+import 'package:study_group_app/models/user.dart';
 import 'package:study_group_app/screens/groups/group_detail.dart';
 import 'dart:math';
+
+import 'package:study_group_app/utilities/loading.dart';
 
 class GroupCard extends StatelessWidget {
   final Group group;
@@ -9,7 +13,8 @@ class GroupCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    var user = Provider.of<User>(context);
+    return user == null ? Loading() : Container(
       height: 120.0,
       margin: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
       decoration: BoxDecoration(
@@ -32,16 +37,16 @@ class GroupCard extends StatelessWidget {
           ),
           // Call the group_detail page to view
           onTap: () {
-            final Color randColor = Color.fromRGBO(Random().nextInt(255),
+            final randColor = Color.fromRGBO(Random().nextInt(255),
                 Random().nextInt(255), Random().nextInt(255), 1.0);
-            final Color textColor = randColor.computeLuminance() > 0.45
+            final textColor = randColor.computeLuminance() > 0.45
                 ? Colors.black
                 : Colors.white;
             Navigator.push(
               context,
               MaterialPageRoute(
                 builder: (context) => GroupDetail(
-                    group: group, bgColor: randColor, textColor: textColor),
+                    userId: user.uid, group: group, bgColor: randColor, textColor: textColor),
               ),
             );
           },
@@ -51,15 +56,13 @@ class GroupCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Container(height: 5.0),
-
                 // Following Widgets are contents of each user's group.
-                // TODO Style and design
                 Text(
                   group.name,
                   style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
-                  )
+                  ),
                 ),
                 Container(
                     margin: EdgeInsets.symmetric(vertical: 8.0),

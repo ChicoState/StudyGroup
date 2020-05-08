@@ -94,7 +94,7 @@ class _LoginPageState extends State<LoginPage> {
                                 keyboardType: TextInputType.emailAddress,
                                 decoration: InputDecoration(
                                   icon: FaIcon(FontAwesomeIcons.envelope),
-                                  labelText: "Email Address",
+                                  labelText: 'Email Address',
                                 ),
                                 validator: Validations.instance.emailValidation,
                                 onSaved: (String val) {
@@ -107,7 +107,7 @@ class _LoginPageState extends State<LoginPage> {
                           // Password field - actual typed letters are hidden
                           TextFormField(
                             decoration: InputDecoration(
-                              labelText: "Password",
+                              labelText: 'Password',
                               icon: FaIcon(FontAwesomeIcons.lock),
                             ),
                             obscureText: true,
@@ -153,9 +153,8 @@ class _LoginPageState extends State<LoginPage> {
                               Text(
                                 ' - OR - ',
                                 style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.white
-                                ),
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.white),
                               ),
                               SizedBox(height: 30),
                               RichText(

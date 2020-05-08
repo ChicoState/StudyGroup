@@ -82,7 +82,7 @@ class MainDrawer extends StatelessWidget {
                     ),
                   ),
                   onTap: () {
-                    Navigator.of(context).pushNamed("/courses");
+                    Navigator.of(context).pushNamed('/courses');
                   },
                 ),
                 ListTile(

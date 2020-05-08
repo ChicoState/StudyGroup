@@ -5,6 +5,7 @@ import 'package:study_group_app/screens/groups/group_card.dart';
 import 'package:study_group_app/utilities/loading.dart';
 
 class GroupView extends StatefulWidget {
+  @override
   _GroupViewState createState() => _GroupViewState();
 }
 

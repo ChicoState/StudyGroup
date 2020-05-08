@@ -17,7 +17,7 @@ class HomePage extends StatefulWidget {
 
 // Inherits from HomePage above
 class _HomePageState extends State<HomePage> {
-  var appBarTitle = "Home";
+  var appBarTitle = 'Home';
   int _selectedPage = 0;
 
   @override
@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> {
                   canvasColor: Color(0xFF437c90),
                   textTheme: Theme.of(context)
                       .textTheme
-                      .copyWith(title: TextStyle(color: Colors.white)),
+                      .copyWith(headline6: TextStyle(color: Colors.white)),
                 ),
                 child: BottomNavigationBar(
                   selectedItemColor: Colors.blue,
